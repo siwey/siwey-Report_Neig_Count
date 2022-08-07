@@ -1,0 +1,261 @@
+---
+title: "Einschätzung zu den Befindlichkeiten der Wirtschaft in den Nachbarländern"
+author: "Simon Wey"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  pdf_document:
+    pandoc_args: --listings
+    includes: 
+      in_header: preamble.tex
+  html_document:
+    df_print: paged
+  word_document: default
+bibliography: reference.bib
+csl: elsevier-harvard.csl
+header-includes: \usepackage{graphicx}
+
+abstract: 
+- Die steigenden Inflationsraten beschäftigen nicht nur Konsumentinnen und Konsumenten, sondern auch die Politik, die   sich überlegen muss, ob und wie sie gegen den Kaufkraftverlust vorgehen will. Mit ihrer überraschend starken         Erhöhung des Leitzinses hat die Schweizerische Nationalbank viele überrascht. Es bleiben die preistreibenden Entwicklungen als Folge des Ukrainekriegs und der Corona-Pandemie, wobei diese die zugrundeliegende Teuerung aufgrund der expansiven Geldpolitik der Notenbanken überlagern. Eine vergleichbare Situation war die «Great depression» in den 70er-Jahren. Eine Mehrheit der von NZZ und KOF befragten Ökonomen geht von einem temporären Anstieg der Inflation aus. Der Spielraum für Lohnerhöhungen bleibt überschaubar, denn auch die Unternehmen kämpfen beim Bezug von Vorprodukten mit den höheren Preisen. Dies nagt an der Marge und somit am Spielraum für Lohnerhöhungen. Daneben kühlt sich auch die wirtschaftliche Entwicklung ab, etwa aufgrund der zunehmend restriktiveren Geldpolitik, des Ukrainie-Kriegs oder der nach wie vor schwierigen Covid-Situation in China.
+tags:
+- nothing
+- nothingness
+---
+\renewcommand{\figurename}{Abbildung} 
+\fontsize{13}{16}
+
+\selectfont
+
+## Befindlichkeit Gesamtwirtschaft (Economic Sentiment Indicator)
+
+```{r plot0, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
+
+rm(list=ls())
+
+library("eurostat")
+library(dplyr) 
+library(ggplot2)
+#query <- search_eurostat(pattern="hindering", fixed=FALSE)
+
+cat <- c("AT","DE","EA19","FR","IT")
+ty <- c("BS-ESI-I","BS-ICI-BAL","BS-SCI-BAL")  #  ,"BS-ESI-I",
+t <- c("BAD","VBAD")#"GOOD","VGOOD")
+
+dat_hind_fac_i <- get_eurostat(id="ei_bsin_q_r2") #Industry (quarterly: ei_bsin_q_r2)
+dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Services (quarterly: ei_bsse_q_r2)
+dat_s_indic <- get_eurostat(id="ei_bssi_m_r2") 
+dat_empl_exp <- get_eurostat(id="teibs040") 
+
+#d <- filter(dat,indic %in% ty, geo == "IT", s_adj =="SA",time>="2010-01-01") 
+d <- filter(dat_s_indic,indic %in% ty, geo %in% cat, s_adj =="SA",time>="2020-01-01") 
+
+
+d$geo[d$geo=="AT"] <- "Österreich"
+d$geo[d$geo=="EA19"] <- "EU-19"
+d$geo[d$geo=="DE"] <- "Deutschland"
+d$geo[d$geo=="FR"] <- "Frankreich"
+d$geo[d$geo=="IT"] <- "Italien"
+
+d$indic[d$indic=="BS-ESI-I"] <- "Economic sentiment ind."
+d$indic[d$indic=="BS-ICI-BAL"] <- "Industrial confidence ind."
+d$indic[d$indic=="BS-SCI-BAL"] <- "Services confidence ind."
+
+
+p <- ggplot(data = d) + 
+    geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
+    scale_color_manual(name="HADK",values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(#title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom",legend.title=element_blank()) + 
+    coord_fixed(ratio=5) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+    scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
+    theme(axis.text.x = element_text( 
+      angle = 90, 
+      #color="blue", 
+      vjust=0.6),strip.text.x = element_text(face = "bold")#,
+      #size=15)#, 
+      #  face=1)
+    )+ 
+    #facet_wrap(~ LOCATION, nrow = 2) 
+    facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
+    #geom_text_repel(
+    #aes(x=Time,y = values,label=values), data = data_ends,
+    #fontface ="plain", color = "black", size = 5
+ # ) 
+
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf')
+print(p)
+dev.off()
+
+```
+
+\begin{figure}[] \centering
+\includegraphics[trim={0 2.5cm 0 0cm },clip,width=\textwidth]{/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf}
+\caption{Die letzten Datenpunkte sind aus dem Monat} 
+\label{Inf_M_W}
+\end{figure}
+
+## Industrie
+
+```{r plot1, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
+
+rm(list=ls())
+
+library("eurostat")
+library(dplyr) 
+library(ggplot2)
+#query <- search_eurostat(pattern="hindering", fixed=FALSE)
+
+cat <- c("AT","DE","EA19","FR","IT")
+t <- c("BS-FLP3-PC","BS-FLP5-PC","BS-FLP1-PC","BS-FLP2-PC")  #  ,"BS-ESI-I",	
+
+dat_hind_fac_i <- get_eurostat(id="ei_bsin_q_r2") #Industry (quarterly: ei_bsin_q_r2)
+#dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Services (quarterly: ei_bsse_q_r2)
+#dat_s_indic <- get_eurostat(id="ei_bssi_m_r2") 
+#dat_empl_exp <- get_eurostat(id="teibs040") 
+
+#d <- filter(dat,indic %in% ty, geo == "IT", s_adj =="SA",time>="2010-01-01") 
+d_hind_i <- filter(dat_hind_fac_i,indic %in% t, geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+
+
+d_hind_i$geo[d_hind_i$geo=="AT"] <- "Österreich"
+d_hind_i$geo[d_hind_i$geo=="EA19"] <- "EU-19"
+d_hind_i$geo[d_hind_i$geo=="DE"] <- "Deutschland"
+d_hind_i$geo[d_hind_i$geo=="FR"] <- "Frankreich"
+d_hind_i$geo[d_hind_i$geo=="IT"] <- "Italien"
+
+d_hind_i$indic[d_hind_i$indic=="BS-FLP3-PC"] <- "Labour"
+d_hind_i$indic[d_hind_i$indic=="BS-FLP5-PC"] <- "Fin. constraints"
+d_hind_i$indic[d_hind_i$indic=="BS-FLP1-PC"] <- "No constraints"
+d_hind_i$indic[d_hind_i$indic=="BS-FLP2-PC"] <- "Insufficient Demand"
+
+
+
+p <- ggplot(data = d_hind_i) + 
+    geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
+    scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(#title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom",legend.title=element_blank()) + 
+    coord_fixed(ratio=20) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+    scale_x_date(date_breaks = "12 month", date_labels ="%m-%Y")+
+    theme(axis.text.x = element_text( 
+      angle = 90, 
+      #color="blue", 
+      vjust=0.6),strip.text.x = element_text(face = "bold")#,
+      #size=15)#, 
+      #  face=1)
+    )+ 
+    #facet_wrap(~ LOCATION, nrow = 2) 
+    facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
+    #geom_text_repel(
+    #aes(x=Time,y = values,label=values), data = data_ends,
+    #fontface ="plain", color = "black", size = 5
+ # ) 
+
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf')
+print(p)
+dev.off()
+
+```
+\begin{figure}[] \centering
+\includegraphics[trim={0 2.5cm 0 0cm },clip,width=\textwidth]{/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf}
+\caption{Industrie} 
+\label{Inf_M_W}
+\end{figure}
+## Dienstleistungen
+
+```{r plot2, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
+
+rm(list=ls())
+
+library("eurostat")
+library(dplyr) 
+library(ggplot2)
+#query <- search_eurostat(pattern="hindering", fixed=FALSE)
+
+cat <- c("AT","DE","EA19","FR","IT")
+t <- c("BS-FLB3-PC","BS-FLB5-PC","BS-FLB1-PC","BS-FLB2-PC")  #  ,"BS-ESI-I",	
+
+dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Industry (quarterly: ei_bsin_q_r2)
+#dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Services (quarterly: ei_bsse_q_r2)
+#dat_s_indic <- get_eurostat(id="ei_bssi_m_r2") 
+#dat_empl_exp <- get_eurostat(id="teibs040") 
+
+#d <- filter(dat,indic %in% ty, geo == "IT", s_adj =="SA",time>="2010-01-01") 
+d_hind_s <- filter(dat_hind_fac_s,indic %in% t, geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+
+
+d_hind_s$geo[d_hind_s$geo=="AT"] <- "Österreich"
+d_hind_s$geo[d_hind_s$geo=="EA19"] <- "EU-19"
+d_hind_s$geo[d_hind_s$geo=="DE"] <- "Deutschland"
+d_hind_s$geo[d_hind_s$geo=="FR"] <- "Frankreich"
+d_hind_s$geo[d_hind_s$geo=="IT"] <- "Italien"
+
+d_hind_s$indic[d_hind_s$indic=="BS-FLB3-PC"] <- "Labour"
+d_hind_s$indic[d_hind_s$indic=="BS-FLB5-PC"] <- "Fin. constraints"
+d_hind_s$indic[d_hind_s$indic=="BS-FLB1-PC"] <- "No constraints"
+d_hind_s$indic[d_hind_s$indic=="BS-FLB2-PC"] <- "Insufficient Demand"
+
+
+
+p <- ggplot(data = d_hind_s) + 
+    geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
+    scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(#title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom",legend.title=element_blank()) + 
+    coord_fixed(ratio=20) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+    scale_x_date(date_breaks = "12 month", date_labels ="%m-%Y")+
+    theme(axis.text.x = element_text( 
+      angle = 90, 
+      #color="blue", 
+      vjust=0.6),strip.text.x = element_text(face = "bold")#,
+      #size=15)#, 
+      #  face=1)
+    )+ 
+    #facet_wrap(~ LOCATION, nrow = 2) 
+    facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
+    #geom_text_repel(
+    #aes(x=Time,y = values,label=values), data = data_ends,
+    #fontface ="plain", color = "black", size = 5
+ # ) 
+
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf')
+print(p)
+dev.off()
+
+```
+\begin{figure}[] \centering
+\includegraphics[trim={0 2.5cm 0 0cm },clip,width=\textwidth]{/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf}
+\caption{DL} 
+\label{Inf_M_W}
+\end{figure}
+# Ausgangslage
+
