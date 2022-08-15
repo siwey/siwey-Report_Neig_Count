@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.9)  10 AUG 2022 10:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.9)  14 AUG 2022 01:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Paper_neighbour_countries.tex
-(./Paper_neighbour_countries.tex
+**Paper_neighbour_countries_II.tex
+(./Paper_neighbour_countries_II.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-08-05> (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -308,7 +308,72 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-(/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+(/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count293
+\LTcapwidth=\dimen164
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count294
+\LT@rows=\count295
+\c@LT@tables=\count296
+\c@LT@chunks=\count297
+\LT@p@ftn=\toks26
+) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen165
+\lightrulewidth=\dimen166
+\cmidrulewidth=\dimen167
+\belowrulesep=\dimen168
+\belowbottomsep=\dimen169
+\aboverulesep=\dimen170
+\abovetopsep=\dimen171
+\cmidrulesep=\dimen172
+\cmidrulekern=\dimen173
+\defaultaddspace=\dimen174
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen175
+\@belowrulesep=\dimen176
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen177
+) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/03/10 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen178
+\ar@mcellbox=\box60
+\extrarowheight=\dimen179
+\NC@list=\toks27
+\extratabsurround=\skip57
+\backup@length=\skip58
+\ar@cellbox=\box61
+) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count302
+\calc@Bcount=\count303
+\calc@Adimen=\dimen180
+\calc@Bdimen=\dimen181
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count304
+\calc@Cskip=\skip61
+) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count305
+) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box62
+\fn@width=\dimen182
+) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
@@ -319,13 +384,34 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
 )
-\Gin@req@height=\dimen164
-\Gin@req@width=\dimen165
+\Gin@req@height=\dimen183
+\Gin@req@width=\dimen184
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-08-05 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count293
-\l__pdf_internal_box=\box55
-) (./Paper_neighbour_countries.aux
+\l__color_backend_stack_int=\count306
+\l__pdf_internal_box=\box63
+) (./Paper_neighbour_countries_II.aux
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
+
+LaTeX Warning: Label `Inf_M_W' multiply defined.
+
 
 LaTeX Warning: Label `Inf_M_W' multiply defined.
 
@@ -333,36 +419,36 @@ LaTeX Warning: Label `Inf_M_W' multiply defined.
 LaTeX Warning: Label `Inf_M_W' multiply defined.
 
 )
-\openout1 = `Paper_neighbour_countries.aux'.
+\openout1 = `Paper_neighbour_countries_II.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 80.
-(./Paper_neighbour_countries.out) (./Paper_neighbour_countries.out)
+Package hyperref Info: Link coloring OFF on input line 90.
+(./Paper_neighbour_countries_II.out) (./Paper_neighbour_countries_II.out)
 \@outlinefile=\write3
-\openout3 = `Paper_neighbour_countries.out'.
+\openout3 = `Paper_neighbour_countries_II.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -398,86 +484,149 @@ Package hyperref Info: Link coloring OFF on input line 80.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count294
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 82.
+\c@lstlisting=\count307
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 92.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 82.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 92.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 82.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 92.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 82.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 92.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 82.
+(Font)              <12> on input line 92.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 82.
+(Font)              <8> on input line 92.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 82.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 82.
+(Font)              <6> on input line 92.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 82.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+) [1
+
+{/Users/simonwey/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 110.
+               Default added (so using `htbp') on input line 161.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf, id=20, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf, id=36, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf  used on input line 163.
+(pdftex.def)             Requested size: 281.86067pt x 242.22897pt.
+[2 </Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 215.
+
+</Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf, id=51, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf  used on input line 217.
+(pdftex.def)             Requested size: 281.86067pt x 242.22897pt.
+</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf, id=53, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf  used on input line 111.
-(pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf  used on input line 223.
+(pdftex.def)             Requested size: 469.76265pt x 469.76265pt.
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 119.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf, id=22, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf, id=55, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf  used on input line 120.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf  used on input line 232.
+(pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
+[3 </Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 240.
+
+</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf, id=69, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf  used on input line 242.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 128.
+               Default added (so using `htbp') on input line 247.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf, id=24, 505.89pt x 505.89pt>
-File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf Graphic file (type pdf)
-<use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf  used on input line 129.
+</Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf, id=71, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf  used on input line 249.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
-[1
 
-{/Users/simonwey/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>] [3 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf>] [4 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>] (./Paper_neighbour_countries.aux)
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 254.
+
+</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf, id=73, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf  used on input line 256.
+(pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 261.
+
+</Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf, id=75, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf  used on input line 263.
+(pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 268.
+
+</Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf, id=77, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf  used on input line 270.
+(pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 275.
+
+</Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf, id=79, 505.89pt x 505.89pt>
+File: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf Graphic file (type pdf)
+<use /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf  used on input line 277.
+(pdftex.def)             Requested size: 375.81166pt x 322.96976pt.
+[4] [5 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>] [6 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf>] [7 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>] [8 </Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf>] [9 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf>] [10 </Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf>] [11 </Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf>] [12 </Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>] (./Paper_neighbour_countries_II.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `Paper_neighbour_countries.out' has not changed.
-(rerunfilecheck)             Checksum: 75A39D5D7CF28565F9EF4AE23CB169E4;689.
+Package rerunfilecheck Info: File `Paper_neighbour_countries_II.out' has not changed.
+(rerunfilecheck)             Checksum: 5A0EAA6C1367FE83149AAFCE58D01239;778.
  ) 
 Here is how much of TeX's memory you used:
- 11818 strings out of 479608
- 184402 string characters out of 5876093
- 482996 words of memory out of 5000000
- 30184 multiletter control sequences out of 15000+600000
- 511525 words of font info for 54 fonts, out of 8000000 for 9000
+ 12598 strings out of 479608
+ 198291 string characters out of 5876093
+ 498959 words of memory out of 5000000
+ 30918 multiletter control sequences out of 15000+600000
+ 514523 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,7n,77p,433b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,7n,77p,436b,462s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb>
-Output written on Paper_neighbour_countries.pdf (4 pages, 187624 bytes).
+Output written on Paper_neighbour_countries_II.pdf (12 pages, 252419 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
