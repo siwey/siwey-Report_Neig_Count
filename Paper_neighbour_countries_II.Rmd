@@ -6,7 +6,9 @@ output:
   pdf_document:
     pandoc_args: --listings
     includes: 
-      in_header: preamble.tex
+      #in_header: preamble.tex
+      includes:
+      in_header: header.tex 
   html_document:
     df_print: paged
   word_document: default
@@ -20,6 +22,12 @@ tags:
 - nothing
 - nothingness
 ---
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE, message=FALSE)
+```
+
+
 \renewcommand{\figurename}{Abbildung} 
 \fontsize{13}{16}
 
@@ -121,6 +129,7 @@ dates_2 <- date_decimal(as.numeric(time(s_tsl$ch.kof.esi.index)))
 \label{Inf_M_W}
 \end{figure}
 
+
 **Monat** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.esi.index))))-1],label=TRUE,abbr = FALSE)`** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.esi.index))))],label=TRUE,abbr = FALSE)`**
 ------------- | -------------|-------------
 **ESI Schweiz** | `r round(s_tsl$ch.kof.esi.index[length(s_tsl$ch.kof.esi.index)-1],1)` | `r round(s_tsl$ch.kof.esi.index[length(s_tsl$ch.kof.esi.index)],1)`
@@ -208,6 +217,53 @@ dev.off()
 \label{Inf_M_W}
 \end{figure}
 
+```{r}
+# Fake confusion matrix to work with
+x = structure(c(34L, 6L, 9L, 35L), .Dim = c(2L, 2L), .Dimnames = structure(list(
+    Actual = c("EU-19","Deutschland" ), Predicted = c(format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B"), format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B"))), .Names = c("Land", 
+"Einschätzung zur Wirtschaft")), class = "table")
+
+x=cbind(x, prop.table(x), prop.table(x, 1), prop.table(x,2))
+x[, -c(1,2)] = sapply(x[,-c(1,2)], function(i) paste0(sprintf("%1.1f", i*100),"%"))
+x = cbind(Actual=rownames(x), x)
+```  
+
+```{r use_xtable, results="asis"}
+# Output the confusion matrix created above as a latex table
+library(xtable)
+options(xtable.comment=FALSE)
+
+# This is a modified version of a function created in the following SO answer:
+# http://stackoverflow.com/a/38978541/496488
+make_addtorow <- function(row.name, terms, colSpan, width) {
+  # Custom row function
+  paste0(row.name, 
+  paste0('& \\multicolumn{', colSpan, '}{C{', width, 'cm}}{', 
+         terms, 
+         '}', 
+        collapse=''), 
+  '\\\\')
+}
+
+addtorow <- list()
+addtorow$pos <- list(-1,-1,-1,-1) 
+addtorow$command <- c(
+  "\\hline",
+  make_addtorow("", c("Predicted"), 6, 12),
+  "\\hline",
+  make_addtorow("", c("Wirtsch. Lage", "Ind. Vertrauensind.", "DL Vertrauensind."), 2, 3)
+  )
+
+xtbl = xtable(x, caption="Created with xtable")
+
+align(xtbl) <- c("|L{0cm}|", "L{1.2cm}|", rep("R{1cm}|",8))
+
+print(xtbl, 
+      include.rownames=FALSE, 
+      tabular.environment="tabularx", 
+      width="0.92\\textwidth",
+      add.to.row = addtorow)
+```
 
 **Wirtsch. Lage** | **`r format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B")`** | **`r format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B")`**
 ------------- | -------------|-------------
