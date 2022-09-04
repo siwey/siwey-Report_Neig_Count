@@ -108,16 +108,26 @@ tsl <- get_time_series(c(
 s_tsl <- lapply(tsl,window, start=c(2010,1))
 pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf')
 tsplot(s_tsl)
+#legend('topleft', legend=c("ESI Schweiz", "ESI EU"), bg='white')
 dev.off()
+dates_2 <- date_decimal(as.numeric(time(s_tsl$ch.kof.esi.index)))
 
 
 ```
 \begin{figure}[] \centering
-\includegraphics[trim={0 2.5cm 0 0cm },clip,width=.6\textwidth]
+\includegraphics[trim={0 0cm 0 0cm },clip,width=.6\textwidth]
 {/Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf}
 \caption{Economic Sentiment Indicator Schweiz und EU} 
 \label{Inf_M_W}
 \end{figure}
+
+**Monat** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.esi.index))))-1],label=TRUE,abbr = FALSE)`** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.esi.index))))],label=TRUE,abbr = FALSE)`**
+------------- | -------------|-------------
+**ESI Schweiz** | `r round(s_tsl$ch.kof.esi.index[length(s_tsl$ch.kof.esi.index)-1],1)` | `r round(s_tsl$ch.kof.esi.index[length(s_tsl$ch.kof.esi.index)],1)`
+------------- | -------------|-------------
+**ESI EU** | `r round(s_tsl$eu.ec.esi.eu.esi[length(s_tsl$eu.ec.esi.eu.esi)-1],1)` | `r round(s_tsl$eu.ec.esi.eu.esi[length(s_tsl$eu.ec.esi.eu.esi)],1)`
+Table: ESI, letzte Werte. Quelle: KOF
+
 
 ```{r plot0, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
 
@@ -188,6 +198,8 @@ pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf')
 print(p)
 dev.off()
 
+
+
 ```
 
 \begin{figure}[h] \centering
@@ -195,6 +207,18 @@ dev.off()
 \caption{Einschätzungen zur wirtschaftlichen Lage in der Gesamtwirtschaft und den Sektoren} 
 \label{Inf_M_W}
 \end{figure}
+
+
+**Wirtsch. Lage** | **`r format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B")`** | **`r format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B")`**
+------------- | -------------|-------------
+**EU-19** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$values[1]`
+**Deutschland** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Deutschland")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Deutschland")$values[1]`
+**Frankreich** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Frankreich")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Frankreich")$values[1]`
+**Italien** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[1]`
+**Österreich** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[1]`
+Table: Einschätzung zur wirtschaftlichen Lage in den entsprechenden Ländern. Quelle: Eurostat
+
+
 
 ## Industrie
 
