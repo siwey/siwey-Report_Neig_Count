@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.9)  14 AUG 2022 01:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.27)  31 AUG 2022 21:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Paper_neighbour_countries_II.tex
 (./Paper_neighbour_countries_II.tex
 LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-08-05> (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2022-08-23> (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
@@ -387,7 +387,7 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 \Gin@req@height=\dimen183
 \Gin@req@width=\dimen184
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-08-05 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2022-08-23 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count306
 \l__pdf_internal_box=\box63
 ) (./Paper_neighbour_countries_II.aux
@@ -607,6 +607,11 @@ File: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf Graphic file (type
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>
 Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf  used on input line 277.
 (pdftex.def)             Requested size: 375.81166pt x 322.96976pt.
+
+Underfull \hbox (badness 2735) in paragraph at lines 284--284
+[]\T1/lmr/m/n/13 Table 2: Geschäft-slageindika-tor, let-zte Werte.
+ []
+
 [4] [5 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>] [6 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf>] [7 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>] [8 </Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf>] [9 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf>] [10 </Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf>] [11 </Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf>] [12 </Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>] (./Paper_neighbour_countries_II.aux)
 
 LaTeX Warning: There were multiply-defined labels.
@@ -615,18 +620,18 @@ Package rerunfilecheck Info: File `Paper_neighbour_countries_II.out' has not cha
 (rerunfilecheck)             Checksum: 5A0EAA6C1367FE83149AAFCE58D01239;778.
  ) 
 Here is how much of TeX's memory you used:
- 12598 strings out of 479608
- 198291 string characters out of 5876093
- 498959 words of memory out of 5000000
- 30918 multiletter control sequences out of 15000+600000
+ 12601 strings out of 479459
+ 198327 string characters out of 5872225
+ 500021 words of memory out of 5000000
+ 31069 multiletter control sequences out of 15000+600000
  514523 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  72i,7n,77p,436b,462s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb>
-Output written on Paper_neighbour_countries_II.pdf (12 pages, 252419 bytes).
+Output written on Paper_neighbour_countries_II.pdf (12 pages, 253939 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
