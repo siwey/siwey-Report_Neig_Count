@@ -607,6 +607,8 @@ tsplot(s_tsl)
 s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)]
 s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)-1]
 s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11
+
+dates_2 <- date_decimal(as.numeric(time(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11)))
 dev.off()
 
 
@@ -620,6 +622,11 @@ dev.off()
 `} 
 \label{Inf_M_W}
 \end{figure}
+
+**Monat** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11))))-1],label=TRUE,abbr = FALSE)`** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11))))],label=TRUE,abbr = FALSE)`**
+------------- | -------------|-------------
+**KOF-Geschäftslageindikator** | `r round(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11[length(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11)-1],1)` | `r round(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11[length(s_tsl$ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11)],1)`
+Table: Geschäftslageindikator, letzte Werte. Quelle: KOF
 
 # Ausgangslage
 
