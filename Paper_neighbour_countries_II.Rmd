@@ -25,6 +25,15 @@ tags:
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(echo = FALSE, message=FALSE)
+library(kofdata)
+library(tstools)
+library(lubridate)
+library("eurostat")
+library(dplyr) 
+library(ggplot2)
+library(xtable)
+options(xtable.comment=FALSE)
+
 ```
 
 
@@ -54,12 +63,7 @@ A confidence indicator is a statistical indicator based on the results from busi
 
 rm(list=ls())
 
-library(kofdata)
-library(tstools)
-library(lubridate)
-# just for viz
-library(tstools)
-library(knitr)
+
 tsl <- get_time_series("ch.kof.barometer")
 s_tsl <- lapply(tsl,window, start=c(2020,1))
 pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf')
@@ -91,6 +95,8 @@ dev.off()
 **KOF-Konjunktur-Barometer** | `r round(s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)-1],1)` | `r round(s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)],1)`
 Table: KOF-Konjunkturbarometer, letzte Werte. Quelle: KOF
 
+
+
 # hallo
 
 A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
@@ -107,8 +113,6 @@ A confidence indicator is a statistical indicator based on the results from busi
 
 rm(list=ls())
 
-library(kofdata)
-library(tstools)
 # just for viz
 tsl <- get_time_series(c(
   "ch.kof.esi.index",
@@ -142,9 +146,7 @@ Table: ESI, letzte Werte. Quelle: KOF
 
 rm(list=ls())
 
-library("eurostat")
-library(dplyr) 
-library(ggplot2)
+
 #query <- search_eurostat(pattern="hindering", fixed=FALSE)
 
 cat <- c("AT","DE","EA19","FR","IT")
@@ -228,42 +230,7 @@ x[, -c(1,2)] = sapply(x[,-c(1,2)], function(i) paste0(sprintf("%1.1f", i*100),"%
 x = cbind(Actual=rownames(x), x)
 ```  
 
-```{r use_xtable, results="asis"}
-# Output the confusion matrix created above as a latex table
-library(xtable)
-options(xtable.comment=FALSE)
 
-# This is a modified version of a function created in the following SO answer:
-# http://stackoverflow.com/a/38978541/496488
-make_addtorow <- function(row.name, terms, colSpan, width) {
-  # Custom row function
-  paste0(row.name, 
-  paste0('& \\multicolumn{', colSpan, '}{C{', width, 'cm}}{', 
-         terms, 
-         '}', 
-        collapse=''), 
-  '\\\\')
-}
-
-addtorow <- list()
-addtorow$pos <- list(-1,-1,-1,-1) 
-addtorow$command <- c(
-  "\\hline",
-  make_addtorow("", c("Predicted"), 6, 12),
-  "\\hline",
-  make_addtorow("", c("Wirtsch. Lage", "Ind. Vertrauensind.", "DL Vertrauensind."), 2, 3)
-  )
-
-xtbl = xtable(x, caption="Created with xtable")
-
-align(xtbl) <- c("|L{0cm}|", "L{1.2cm}|", rep("R{1cm}|",8))
-
-print(xtbl, 
-      include.rownames=FALSE, 
-      tabular.environment="tabularx", 
-      width="0.92\\textwidth",
-      add.to.row = addtorow)
-```
 
 **Wirtsch. Lage** | **`r format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B")`** | **`r format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B")`**
 ------------- | -------------|-------------
@@ -273,6 +240,71 @@ print(xtbl,
 **Italien** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[1]`
 **Österreich** | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[2]` | `r filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[1]`
 Table: Einschätzung zur wirtschaftlichen Lage in den entsprechenden Ländern. Quelle: Eurostat
+
+```{r}
+x <- structure(c(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$values[2], filter(d,indic=="Wirtschaftliche Lage" & geo=="Deutschland")$values[2], filter(d,indic=="Wirtschaftliche Lage" & geo=="Frankreich")$values[2], filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[2],filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[2],filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$values[1], filter(d,indic=="Wirtschaftliche Lage" & geo=="Deutschland")$values[1], filter(d,indic=="Wirtschaftliche Lage" & geo=="Frankreich")$values[1], filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[1],filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[1],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="EU-19")$values[2],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Deutschland")$values[2],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Frankreich")$values[2],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Italien")$values[2],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Österreich")$values[2],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="EU-19")$values[1],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Deutschland")$values[1],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Frankreich")$values[1],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Italien")$values[1],filter(d,indic=="Industrie: Vertrauensindikator" & geo=="Österreich")$values[1],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="EU-19")$values[2],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Deutschland")$values[2],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Frankreich")$values[2],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Italien")$values[2],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Österreich")$values[2],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="EU-19")$values[1],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Deutschland")$values[1],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Frankreich")$values[1],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Italien")$values[1],filter(d,indic=="Dienstleistungen: Vertrauensindikator" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c( format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B"), format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B"),format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B"), format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B"),format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B"), format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B"))), .Names = c("Actual", "Predicted")), class = "table")
+
+
+
+
+PrintConfusionMatrix <- function(data, ...) {
+
+  stopifnot(all(dim(x) == c(5, 6)))
+
+#  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
+#  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
+
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
+    \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen}} \\\\ \\cline{2-7}
+    \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Wirtsch. Lage}} & \\multicolumn{2}{c|}{\\textbf{Ind.\nVertrauensind.}} & \\multicolumn{2}{c|}{\\textbf{DL\n Vertrauensind.}} \\\\ \\hline
+    \\textbf{Land} ')
+
+
+  print(xtable(x),
+        only.contents = TRUE, 
+        comment = FALSE,
+        sanitize.colnames.function = identity, 
+        sanitize.rownames.function = identity, 
+        hline.after = 0:5,
+        ...)
+  cat("\\end{tabular}")
+}
+```
+
+```{r, results='asis'}
+PrintConfusionMatrix(x)
+```
+
+```{r}
+  x <- structure(c(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$values[2], filter(d,indic=="Wirtschaftliche Lage" & geo=="Deutschland")$values[2], filter(d,indic=="Wirtschaftliche Lage" & geo=="Frankreich")$values[2], filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[2],filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[2],filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$values[1],filter(d,indic=="Wirtschaftliche Lage" & geo=="Deutschland")$values[1],filter(d,indic=="Wirtschaftliche Lage" & geo=="Frankreich")$values[1],filter(d,indic=="Wirtschaftliche Lage" & geo=="Italien")$values[1],filter(d,indic=="Wirtschaftliche Lage" & geo=="Österreich")$values[1]),.Dim = c(5, 2), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c( format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[2],"%B"),  format(filter(d,indic=="Wirtschaftliche Lage" & geo=="EU-19")$time[1],"%B"))), .Names = c("Actual", "Predicted")), class = "table")
+
+
+
+PrintConfusionMatrix <- function(data, ...) {
+
+  stopifnot(all(dim(x) == c(5, 2)))
+
+#  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
+#  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
+
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-3}
+    \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Wirtsch. Lage}} \\\\ \\hline     \\textbf{Land} ')
+
+
+  print(xtable(x),
+        only.contents = TRUE, 
+        comment = FALSE,
+        sanitize.colnames.function = identity, 
+        sanitize.rownames.function = identity, 
+        hline.after = 0:5,
+        ...)
+  cat("\\end{tabular}")
+}
+```
+
+```{r, results='asis'}
+PrintConfusionMatrix(x)
+```
 
 
 
@@ -676,10 +708,7 @@ dev.off()
 
 rm(list=ls())
 
-library(kofdata)
-library(tstools)
-# just for viz
-library(tstools)
+
 tsl <- get_time_series("ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11")
 s_tsl <- lapply(tsl,window, start=c(2020,1))
 pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf')
