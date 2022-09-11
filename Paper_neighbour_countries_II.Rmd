@@ -15,7 +15,6 @@ output:
 bibliography: reference.bib
 csl: elsevier-harvard.csl
 header-includes: \usepackage{graphicx}
-
 abstract: 
 - Die steigenden Inflationsraten beschäftigen nicht nur Konsumentinnen und Konsumenten, sondern auch die Politik, die   sich überlegen muss, ob und wie sie gegen den Kaufkraftverlust vorgehen will. Mit ihrer überraschend starken         Erhöhung des Leitzinses hat die Schweizerische Nationalbank viele überrascht. Es bleiben die preistreibenden Entwicklungen als Folge des Ukrainekriegs und der Corona-Pandemie, wobei diese die zugrundeliegende Teuerung aufgrund der expansiven Geldpolitik der Notenbanken überlagern. Eine vergleichbare Situation war die «Great depression» in den 70er-Jahren. Eine Mehrheit der von NZZ und KOF befragten Ökonomen geht von einem temporären Anstieg der Inflation aus. Der Spielraum für Lohnerhöhungen bleibt überschaubar, denn auch die Unternehmen kämpfen beim Bezug von Vorprodukten mit den höheren Preisen. Dies nagt an der Marge und somit am Spielraum für Lohnerhöhungen. Daneben kühlt sich auch die wirtschaftliche Entwicklung ab, etwa aufgrund der zunehmend restriktiveren Geldpolitik, des Ukrainie-Kriegs oder der nach wie vor schwierigen Covid-Situation in China.
 tags:
@@ -375,12 +374,48 @@ pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf')
 print(p)
 dev.off()
 
+
 ```
 \begin{figure}[h] \centering
 \includegraphics[trim={0 2.5cm 0 0cm },clip,width=\textwidth]{/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf}
 \caption{Industrie: Hemmnisse in der Produktion} 
 \label{Inf_M_W}
 \end{figure}
+
+```{r}
+x <- structure(c(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[1],filter(d_hind_i,indic=="Keine" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Keine" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Keine" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Keine" & geo=="Österreich")$values[1],filter(d_hind_i,indic=="Andere" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Andere" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Andere" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Andere" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c(format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"))), .Names = c("Actual", "Predicted")), class = "table")
+
+
+
+
+PrintConfusionMatrix <- function(data, ...) {
+
+  stopifnot(all(dim(x) == c(5, 6)))
+
+#  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
+#  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
+
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
+    \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen Hemmnisse}} \\\\ \\cline{2-7}
+    \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Arbeitskräftemangel}} & \\multicolumn{2}{c|}{\\textbf{Keine}} & \\multicolumn{2}{c|}{\\textbf{Andere}} \\\\ \\hline
+    \\textbf{Land} ')
+
+
+  print(xtable(x),
+        only.contents = TRUE, 
+        comment = FALSE,
+        sanitize.colnames.function = identity, 
+        sanitize.rownames.function = identity, 
+        hline.after = 0:5,
+        ...)
+  cat("\\end{tabular}")
+}
+```
+
+```{r, results='asis'}
+PrintConfusionMatrix(x)
+```
+
 
 ## Dienstleistungen
 
@@ -458,6 +493,40 @@ dev.off()
 \caption{Dienstleistungen: Hemmnisse beim Erbringen von Dienstleistungen} 
 \label{Inf_M_W}
 \end{figure}
+
+```{r}
+x <- structure(c(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[1],filter(d_hind_s,indic=="Keine" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Keine" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Keine" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Keine" & geo=="Österreich")$values[1],filter(d_hind_s,indic=="Andere" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Andere" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Andere" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Andere" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c(format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"))), .Names = c("Actual", "Predicted")), class = "table")
+
+
+
+
+PrintConfusionMatrix <- function(data, ...) {
+
+  stopifnot(all(dim(x) == c(5, 6)))
+
+#  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
+#  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
+
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
+    \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen Hemmnisse}} \\\\ \\cline{2-7}
+    \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Arbeitskräftemangel}} & \\multicolumn{2}{c|}{\\textbf{Keine}} & \\multicolumn{2}{c|}{\\textbf{Andere}} \\\\ \\hline
+    \\textbf{Land} ')
+
+
+  print(xtable(x),
+        only.contents = TRUE, 
+        comment = FALSE,
+        sanitize.colnames.function = identity, 
+        sanitize.rownames.function = identity, 
+        hline.after = 0:5,
+        ...)
+  cat("\\end{tabular}")
+}
+```
+
+```{r, results='asis'}
+PrintConfusionMatrix(x)
+```
 
 ```{r plot300, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
 rm(list=ls())

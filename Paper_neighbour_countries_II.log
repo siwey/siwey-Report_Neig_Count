@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.4)  11 SEP 2022 00:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.4)  11 SEP 2022 23:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,80 +676,91 @@ Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_H
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+Overfull \hbox (32.36732pt too wide) in paragraph at lines 317--333
+[] 
+ []
+
+
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 320.
+               Default added (so using `htbp') on input line 337.
 
 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf, id=63, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf  used on input line 322.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf  used on input line 339.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
 
+Overfull \hbox (32.36732pt too wide) in paragraph at lines 344--360
+[] 
+ []
+
+
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 327.
+               Default added (so using `htbp') on input line 361.
 
 </Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf, id=65, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf  used on input line 329.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf  used on input line 363.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
+[4]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 334.
+               Default added (so using `htbp') on input line 368.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf, id=67, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf, id=73, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf  used on input line 336.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf  used on input line 370.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 341.
+               Default added (so using `htbp') on input line 375.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf, id=69, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf, id=75, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf  used on input line 343.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf  used on input line 377.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 348.
+               Default added (so using `htbp') on input line 382.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf, id=71, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf, id=77, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf  used on input line 350.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf  used on input line 384.
 (pdftex.def)             Requested size: 469.76265pt x 403.71056pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 355.
+               Default added (so using `htbp') on input line 389.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf, id=73, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf, id=79, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf  used on input line 357.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf  used on input line 391.
 (pdftex.def)             Requested size: 375.81166pt x 322.96976pt.
 
-Underfull \hbox (badness 2735) in paragraph at lines 364--364
+Underfull \hbox (badness 2735) in paragraph at lines 398--398
 []\T1/lmr/m/n/13 Table 4: Geschäft-slageindika-tor, let-zte Werte.
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 362--368
+Underfull \hbox (badness 10000) in alignment at lines 396--402
 [] [] []
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 368--372
+Underfull \hbox (badness 10000) in alignment at lines 402--406
 [] [] []
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 372--375
+Underfull \hbox (badness 10000) in alignment at lines 406--409
 [] [] []
  []
 
-[4] [5 </Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf>] [6 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>] [7 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf>] [8 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>] [9 </Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf>] [10 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf>] [11 </Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf>] [12 </Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf>] [13 </Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>] (./Paper_neighbour_countries_II.aux)
+[5 </Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf>] [6 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>] [7 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_i.pdf>] [8 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_s.pdf>] [9 </Users/simonwey/Repos/Foreign_economics/Graphics/BSC.pdf>] [10 </Users/simonwey/Repos/Foreign_economics/Graphics/wrap_empl_exp_eco.pdf>] [11 </Users/simonwey/Repos/Foreign_economics/Graphics/cons_mood.pdf>] [12 </Users/simonwey/Repos/Foreign_economics/Graphics/empl_exp_sector.pdf>] [13 </Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf>] (./Paper_neighbour_countries_II.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -759,13 +770,13 @@ Package rerunfilecheck Info: File `Paper_neighbour_countries_II.out' has not cha
 Here is how much of TeX's memory you used:
  14123 strings out of 477005
  226225 string characters out of 5825627
- 576831 words of memory out of 5000000
+ 587831 words of memory out of 5000000
  35018 multiletter control sequences out of 15000+600000
  523558 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  72i,8n,77p,436b,568s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb>
-Output written on Paper_neighbour_countries_II.pdf (13 pages, 259174 bytes).
+Output written on Paper_neighbour_countries_II.pdf (13 pages, 261177 bytes).
 PDF statistics:
  232 PDF objects out of 1000 (max. 8388607)
  173 compressed objects within 2 object streams
