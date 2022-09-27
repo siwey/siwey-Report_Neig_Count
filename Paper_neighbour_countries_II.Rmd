@@ -9,6 +9,7 @@ output:
       #in_header: preamble.tex
       includes:
       in_header: header.tex 
+      fig_caption: yes
   html_document:
     df_print: paged
   word_document: default
@@ -456,7 +457,7 @@ p <- ggplot(data = d_hind_s) +
     #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
     # theme(legend.position="left")+
     #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
-    labs(#title = "Erwerbslosenrate",
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
       #subtitle = "Quelle: Eurostat",
       y = "",
       x = "") +
@@ -495,10 +496,10 @@ dev.off()
 \end{figure}
 
 ```{r}
-x <- structure(c(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[1],filter(d_hind_s,indic=="Keine" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Keine" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Keine" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Keine" & geo=="Österreich")$values[1],filter(d_hind_s,indic=="Andere" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Andere" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Andere" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Andere" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c(format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"))), .Names = c("Actual", "Predicted")), class = "table")
+x <- structure(c(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[1]-filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[1],filter(d_hind_s,indic=="Keine" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Keine" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Keine" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Keine" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Keine" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Keine" & geo=="Österreich")$values[1],filter(d_hind_s,indic=="Andere" & geo=="EU-19")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Deutschland")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Frankreich")$values[2], filter(d_hind_s,indic=="Andere" & geo=="Italien")$values[2],filter(d_hind_s,indic=="Andere" & geo=="Österreich")$values[2],filter(d_hind_s,indic=="Andere" & geo=="EU-19")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Deutschland")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Frankreich")$values[1], filter(d_hind_s,indic=="Andere" & geo=="Italien")$values[1],filter(d_hind_s,indic=="Andere" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c(format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),paste("$\\Delta$", "Hallo"))), .Names = c("Actual", "Predicted")), class = "table")
 
 
-
+#format(filter(d_hind_s,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"))
 
 PrintConfusionMatrix <- function(data, ...) {
 
@@ -513,7 +514,8 @@ PrintConfusionMatrix <- function(data, ...) {
     \\textbf{Land} ')
 
 
-  print(xtable(x),
+  print(xtable(x,
+               caption="Selected observations from **weatherAUS**."),
         only.contents = TRUE, 
         comment = FALSE,
         sanitize.colnames.function = identity, 
@@ -525,7 +527,7 @@ PrintConfusionMatrix <- function(data, ...) {
 ```
 
 ```{r, results='asis'}
-PrintConfusionMatrix(x)
+PrintConfusionMatrix(x,)
 ```
 
 ```{r plot300, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
