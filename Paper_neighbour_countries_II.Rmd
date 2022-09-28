@@ -172,6 +172,8 @@ d$indic[d$indic=="BS-ESI-I"] <- "Wirtschaftliche Lage"
 d$indic[d$indic=="BS-ICI-BAL"] <- "Industrie: Vertrauensindikator"
 d$indic[d$indic=="BS-SCI-BAL"] <- "Dienstleistungen: Vertrauensindikator"
 
+break.vec <- c(seq(from = min(d$time), to = max(d$time),
+                   by = "12 month"),max(d$time))
 
 p <- ggplot(data = d) + 
     geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
@@ -179,7 +181,7 @@ p <- ggplot(data = d) +
     #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
     # theme(legend.position="left")+
     #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
-    labs(#title = "Erwerbslosenrate",
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
       #subtitle = "Quelle: Eurostat",
       y = "",
       x = "") +
@@ -190,14 +192,15 @@ p <- ggplot(data = d) +
     #ggtitle("Inflationsraten - excluding energy")+
     theme(text = element_text(size = 15))+
     scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-    scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
+    #scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
+    scale_x_date(date_labels = "%b %y",breaks=break.vec) +
     theme(axis.text.x = element_text( 
-      angle = 90, 
-      #color="blue", 
-      vjust=0.6),strip.text.x = element_text(face = "bold")#,
-      #size=15)#, 
-      #  face=1)
-    )+ 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+  #  face=1)
+  ) +
     #facet_wrap(~ LOCATION, nrow = 2) 
     facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
     #geom_text_repel(
@@ -337,7 +340,8 @@ d_hind_i$indic[d_hind_i$indic=="BS-FLP5-PC"] <- "Andere"
 d_hind_i$indic[d_hind_i$indic=="BS-FLP1-PC"] <- "Keine"
 #d_hind_i$indic[d_hind_i$indic=="BS-FLP2-PC"] <- "Insufficient Demand"
 
-
+break.vec <- c(seq(from = min(d_hind_i$time), to = max(d_hind_i$time),
+                   by = "16 month"),max(d_hind_i$time))
 
 p <- ggplot(data = d_hind_i) + 
     geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
@@ -345,26 +349,26 @@ p <- ggplot(data = d_hind_i) +
     #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
     # theme(legend.position="left")+
     #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
-    labs(#title = "Erwerbslosenrate",
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
       #subtitle = "Quelle: Eurostat",
       y = "",
       x = "") +
     theme_minimal()+
     theme(legend.position="bottom",legend.title=element_blank()) + 
-    guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+    #guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
     coord_fixed(ratio=20) +  
     #ggtitle("Inflationsraten - excluding energy")+
     theme(text = element_text(size = 15))+
     scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-    scale_x_date(date_breaks = "12 month", date_labels ="%m-%Y")+
-    theme(axis.text.x = element_text( 
-      angle = 90, 
-      #color="blue", 
-      vjust=0.6),strip.text.x = element_text(face = "bold")#,
-      #size=15)#, 
-      #  face=1)
-    )+ 
-    #facet_wrap(~ LOCATION, nrow = 2) 
+  scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +
+     #facet_wrap(~ LOCATION, nrow = 2) 
     facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
     #geom_text_repel(
     #aes(x=Time,y = values,label=values), data = data_ends,
@@ -449,7 +453,8 @@ d_hind_s$indic[d_hind_s$indic=="BS-FLB6-PC"] <- "Andere"
 d_hind_s$indic[d_hind_s$indic=="BS-FLB1-PC"] <- "Keine"
 #d_hind_s$indic[d_hind_s$indic=="BS-FLB2-PC"] <- "Insufficient Demand"
 
-
+break.vec <- c(seq(from = min(d_hind_s$time), to = max(d_hind_s$time),
+                   by = "16 month"),max(d_hind_s$time))
 
 p <- ggplot(data = d_hind_s) + 
     geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
@@ -463,20 +468,19 @@ p <- ggplot(data = d_hind_s) +
       x = "") +
     theme_minimal()+
     theme(legend.position="bottom",legend.title=element_blank()) + 
-    guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+    #guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
     coord_fixed(ratio=20) +  
     #ggtitle("Inflationsraten - excluding energy")+
     theme(text = element_text(size = 15))+
     scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-    scale_x_date(date_breaks = "12 month", date_labels ="%m-%Y")+
-    theme(axis.text.x = element_text( 
-      angle = 90, 
-      #color="blue", 
-      vjust=0.6),strip.text.x = element_text(face = "bold")#,
-      #size=15)#, 
-      #  face=1)
-    )+ 
-    #facet_wrap(~ LOCATION, nrow = 2) 
+  scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +    #facet_wrap(~ LOCATION, nrow = 2) 
     facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
     #geom_text_repel(
     #aes(x=Time,y = values,label=values), data = data_ends,
@@ -548,11 +552,13 @@ d_empl_exp_wh$geo[d_empl_exp_wh$geo=="FR"] <- "Frankreich"
 d_empl_exp_wh$geo[d_empl_exp_wh$geo=="IT"] <- "Italien"
 d_empl_exp_wh$indic[d_empl_exp_wh$indic=="BS-EEI-I"] <- "Gesamtwirtschaft"
 
+break.vec <- c(seq(from = min(d_empl_exp_wh$time), to = max(d_empl_exp_wh$time),
+                   by = "12 month"),max(d_empl_exp_wh$time))
 
 p <- ggplot(data = d_empl_exp_wh) +
 geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) +
 labs(#title = "Erwerbslosenrate",
-#subtitle = "Quelle: Eurostat",
+caption = "Quelle: Eurostat",
 y = "",
 x = "") +
 theme_minimal()+
@@ -562,12 +568,14 @@ coord_fixed(ratio=10) +
 #ggtitle("Inflationsraten - excluding energy")+
 theme(text = element_text(size = 12))+
 scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
-theme(axis.text.x = element_text(
-angle = 90,
-#color="blue",
-vjust=0.6),strip.text.x = element_text(face = "bold")#,
-    )+ 
+scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +
     #facet_wrap(~ LOCATION, nrow = 2) 
     facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
     #geom_text_repel(
@@ -608,6 +616,9 @@ d_empl_exp_eco$indic[d_empl_exp_eco$indic=="BS-CEME-BAL"] <- "Baugewerbe"
 d_empl_exp_eco$indic[d_empl_exp_eco$indic=="BS-REM-BAL"] <- "Einzelhandel"
 d_empl_exp_eco$indic[d_empl_exp_eco$indic=="BS-SEEM-BAL"] <- "Dienstleistungen"
 
+break.vec <- c(seq(from = min(d_empl_exp_eco$time), to = max(d_empl_exp_eco$time),
+                   by = "12 month"),max(d_empl_exp_eco$time))
+
 p <- ggplot(data =d_empl_exp_eco ) +
 geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) +
 scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
@@ -615,7 +626,7 @@ scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")
 # theme(legend.position="left")+
 #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
 labs(#title = "Erwerbslosenrate",
-#subtitle = "Quelle: Eurostat",
+caption  = "Quelle: Eurostat",
 y = "",
 x = "") +
 theme_minimal()+
@@ -623,14 +634,14 @@ theme(legend.position="bottom",legend.title=element_blank()) +
 guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
 theme(text = element_text(size = 12))+
 scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-scale_x_date(date_breaks = "12 month", date_labels ="%m-%Y")+
-theme(axis.text.x = element_text(
-angle = 90,
-#color="blue",
-vjust=0.6),strip.text.x = element_text(face = "bold")#,
-#size=15)#,
-#  face=1)
-)+
+ scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +
 #facet_wrap(~ LOCATION, nrow = 2)
 facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
 #geom_text_repel(
@@ -658,7 +669,7 @@ t <- c("BS-CSMCI","BS-UE-NY")  #  ,"BS-ESI-I",
 
 dat_cons_mood <- get_eurostat(id="ei_bsco_m") #Industry (quarterly: ei_bsin_q_r2)
 
-d_cons_mood <- filter(dat_cons_mood,unit== "BAL",indic %in% t, geo %in% cat, s_adj =="SA",time>="2010-01-01")
+d_cons_mood <- filter(dat_cons_mood,unit== "BAL",indic %in% t, geo %in% cat, s_adj =="SA",time>="2018-01-01")
 
 d_cons_mood$geo[d_cons_mood$geo=="AT"] <- "Österreich"
 d_cons_mood$geo[d_cons_mood$geo=="EA19"] <- "EU-19"
@@ -668,6 +679,8 @@ d_cons_mood$geo[d_cons_mood$geo=="IT"] <- "Italien"
 d_cons_mood$indic[d_cons_mood$indic=="BS-CSMCI"] <- "Konsumentenstimmung"
 d_cons_mood$indic[d_cons_mood$indic=="BS-UE-NY"] <- "Arbeitslosigkeit in den nächsten 12 Mt."
 
+break.vec <- c(seq(from = min(d_cons_mood$time), to = max(d_cons_mood$time),
+                   by = "18 month"),max(d_cons_mood$time))
 
 p <- ggplot(data =d_cons_mood ) +
 geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) +
@@ -676,22 +689,22 @@ scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")
 # theme(legend.position="left")+
 #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
 labs(#title = "Erwerbslosenrate",
-#subtitle = "Quelle: Eurostat",
+caption = "Quelle: Eurostat",
 y = "",
 x = "") +
 theme_minimal()+
 theme(legend.position="bottom",legend.title=element_blank()) +
-guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+#guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
 theme(text = element_text(size = 12))+
 scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-scale_x_date(date_breaks = "24 month", date_labels ="%m-%Y")+
-theme(axis.text.x = element_text(
-angle = 90,
-#color="blue",
-vjust=0.6),strip.text.x = element_text(face = "bold")#,
-#size=15)#,
-#  face=1)
-)+
+scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +
 #facet_wrap(~ LOCATION, nrow = 2)
 facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
 #geom_text_repel(
@@ -730,6 +743,9 @@ d_empl_exp_eco$geo[d_empl_exp_eco$geo=="IT"] <- "Italien"
 d_empl_exp_eco$indic[d_empl_exp_eco$indic=="BS-IEME-BAL"] <- "Industrie: Beschäftigungserwartung nächste 3 Mt."
 d_empl_exp_eco$indic[d_empl_exp_eco$indic=="BS-SEEM-BAL"] <- "Dienstleistungen: Beschäftigungserwartung nächste 3 Mt."
 
+break.vec <- c(seq(from = min(d_empl_exp_eco$time), to = max(d_empl_exp_eco$time),
+                   by = "12 month"),max(d_empl_exp_eco$time))
+
 p <- ggplot(data =d_empl_exp_eco ) +
 geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) +
 scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
@@ -737,7 +753,7 @@ scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")
 # theme(legend.position="left")+
 #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
 labs(#title = "Erwerbslosenrate",
-#subtitle = "Quelle: Eurostat",
+caption = "Quelle: Eurostat",
 y = "",
 x = "") +
 theme_minimal()+
@@ -747,14 +763,14 @@ coord_fixed(ratio=10) +
 #ggtitle("Inflationsraten - excluding energy")+
 theme(text = element_text(size = 12))+
 scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-scale_x_date(date_breaks = "12 month", date_labels ="%m-%Y")+
-theme(axis.text.x = element_text(
-angle = 90,
-#color="blue",
-vjust=0.6),strip.text.x = element_text(face = "bold")#,
-#size=15)#,
-#  face=1)
-)+
+scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +
 #facet_wrap(~ LOCATION, nrow = 2)
 facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
 #geom_text_repel(
