@@ -42,57 +42,106 @@ options(xtable.comment=FALSE)
 
 \selectfont
 
-## Befindlichkeit Gesamtwirtschaft (Economic Sentiment Indicator)
+## Einschätzung zur gesamtwirtschaftlichen Entwicklung sowie in ausgählten Branchen (Short term business statistics)
 
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
+Die Berechnung des Economic Sentiment Indicators (ESI) der Schweiz lehnt sich an die Berechnungsmethode der EU-Kommission. Die Europäische Union berechnet diesen Indikator für alle ihre Mitgliederländer sowie für Aggregate der EU mit unterschiedlicher Länderzusammensetzung. Die Gewichtung der Umfragen unterschiedlicher Branchen wird im Indikator wie folgt gewichtet:
 
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
+* Verarbeitendes Gewerbe (40%)
+* Baugewerbe (5%)
+* Detailhandel (5%)
+* Übrige Dienstleistungen (30%)
+* Konsumentenumfrage (20%) 
 
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
+Der ESI bildet die Einschätzungen von Wirtschaftsakteuren zur aktuellen und zukünftigen wirtschaftlichen Entwicklung ab. Die Gewichtung richtet sich nach den zwei Kriterien der Repräsentativität der Branche und deren Einfluss bei der Voraussage des BIP-Wachstums. Die fünf im ESI verwendeten Indikatoren bilden die Wahrnehmungen und Erwartungen der Entwicklungen in den jeweiligen Branchen in einem komprimierten Index ab. Die Berechnung der Indikatoren erfolgt basierend auf dem einfachen arithmetischen Durchschnitt der saisonbereinigten Salden zu ausgewählten Fragestellungen aus dem gesamten Fragekatalog. Um die gesamtwirtschaftliche Entwicklung zu verfolgen wird der ESI als Aggregat von verschiedenen Indikatoren gebildet. Die Indikatoren der EU-28 und der Eurozone werden als gewichteter Durchschnitt der Indikatoren aus den Ländern gebildet. Dabei bildet das jeweilige Gewicht der Länder deren relative Grösse im entsprechenden Jahr und den relevanten Branchen und Indikatoren. Die Publikation des ESI sowie der branchenspezifischen Indikatoren erfolgt monatlich durch die EU-Kommission und die Konjunkturforschungsstelle der ETH (KOF) für den Indikator in der Schweiz. 
 
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
+Die [EU-Kommission](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Short-term_business_statistics_and_the_economic_sentiment_indicator) publiziert neben dem ESI auch noch Vertrauensindikatoren für die Industrie, das Baugewerbe, den Detailhandel, die Dienstleistungen, den Finanzsektor sowie die Konsumentenstimmung. Die Erfassung der Zeitreihen startet im Jahr 1985. Ein wichtiger Vorteil der Indikatoren ist die präzisen Einschätzungen der zukünftigen wirtschaftlichen Entwicklung. Die Präzision der Prgnosen lässt sich mit einer Gegenüberstellung mit den später publizierten realen Daten vergleichen. 
 
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
-
-A confidence indicator is a statistical indicator based on the results from business surveys interrogating enterprises on their current economic situation and their expectations about future developments. Five separate confidence indicators are produced, for industry, construction, services, retail trade and consumers.
-
-
-
+# KOF-Konjunkturbarometer
 ```{r plot4, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
-
 rm(list=ls())
 
 
 tsl <- get_time_series("ch.kof.barometer")
-s_tsl <- lapply(tsl,window, start=c(2020,1))
+a <- as.data.frame(tsl)
+b <- seq(as.Date("1991/1/1"), by = "month", length.out = nrow(a))
+a <- relocate(mutate(a,b),b)
+
+a <- a %>% 
+  rename(
+    time=b,
+    value=ch.kof.barometer
+    )
+
+
+break.vec <- c(seq(from = min(a$time), to = max(a$time),
+                   by = "12 month"),max(a$time))
+
+sel <- a %>%
+  filter(time >= "2018-01-01"
+         #MEASURE == "STE"
+  ) |>
+  # let's focus on cols location, time value, because none
+  # of the other cols contain information, i.e., all their values
+  # are the same
+  
+  select(time, value)
+
+ 
+p <- ggplot(data=sel,
+       mapping=aes(x=time,y=value))+
+    geom_line(aes(y = value, color = "KOF-Barometer"),size=.7)+
+    scale_color_manual(name="",values = c("#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom") +
+    #scale_color_discrete(name="")+
+     coord_fixed(ratio=9) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    #scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+    #scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
+    scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+    theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=12)#, 
+  #  face=1)
+  ) 
 pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf')
-tsplot(s_tsl)
-#s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)]
-#s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)-1]
-
-
-dates_2 <- date_decimal(as.numeric(time(s_tsl$ch.kof.barometer)))
-a <- month(dates_2[length(dates_2)-1],label=TRUE,abbr = FALSE)
-
-#knit_global()
-
+print(p)
 dev.off()
+
+month(sel$time[nrow(sel)],label=TRUE,abbr=FALSE)
+sel$value[nrow(sel)]
+
+#s_tsl <- lapply(tsl,window, start=c(2020,1))
+#pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf')
+#tsplot(s_tsl)
+
+#dates_2 <- date_decimal(as.numeric(time(s_tsl$ch.kof.barometer)))
+#a <- month(dates_2[length(sel$time)-1],label=TRUE,abbr = FALSE)
 
 
 ```
 
 \begin{figure}[] \centering
-\includegraphics[trim={0 2.5cm 0 0cm },clip,width=.6\textwidth]
+\includegraphics[trim={0 2.5cm 0 0cm },clip,width=.8\textwidth]
 {/Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf}
-\caption{KOF-Konjunkturbarometer mit aktuellem Wert im `r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.barometer))))],label=TRUE,abbr = FALSE)` von `r round(s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)],1)
+\caption{KOF-Konjunkturbarometer mit aktuellem Wert im `r month(sel$time[nrow(sel)],label=TRUE,abbr=FALSE)` von `r round(sel$value[nrow(sel)],1)
 `} 
 \label{Inf_M_W}
 \end{figure}
 
-**Monat** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.barometer))))-1],label=TRUE,abbr = FALSE)`** | **`r month(dates_2[length(date_decimal(as.numeric(time(s_tsl$ch.kof.barometer))))],label=TRUE,abbr = FALSE)`**
+**Monat** | **`r month(sel$time[nrow(sel)-1],label=TRUE,abbr=FALSE)`** | **`r month(sel$time[nrow(sel)-1],label=TRUE,abbr=FALSE)`**
 ------------- | -------------|-------------
-**KOF-Konjunktur-Barometer** | `r round(s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)-1],1)` | `r round(s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)],1)`
+**KOF-Konjunktur-Barometer** | `r round(sel$value[nrow(sel)-1],1)` | `r round(sel$value[nrow(sel)],1)`
 Table: KOF-Konjunkturbarometer, letzte Werte. Quelle: KOF
 
 
@@ -680,7 +729,7 @@ d_cons_mood$indic[d_cons_mood$indic=="BS-CSMCI"] <- "Konsumentenstimmung"
 d_cons_mood$indic[d_cons_mood$indic=="BS-UE-NY"] <- "Arbeitslosigkeit in den nächsten 12 Mt."
 
 break.vec <- c(seq(from = min(d_cons_mood$time), to = max(d_cons_mood$time),
-                   by = "18 month"),max(d_cons_mood$time))
+                   by = "16 month"),max(d_cons_mood$time))
 
 p <- ggplot(data =d_cons_mood ) +
 geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) +
