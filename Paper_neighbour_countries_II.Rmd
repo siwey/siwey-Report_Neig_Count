@@ -470,8 +470,9 @@ dat_hind_fac_i <- get_eurostat(id="ei_bsin_q_r2") #Industry (quarterly: ei_bsin_
 #dat_empl_exp <- get_eurostat(id="teibs040") 
 
 #d <- filter(dat,indic %in% ty, geo == "IT", s_adj =="SA",time>="2010-01-01") 
-d_hind_i <- filter(dat_hind_fac_i,indic %in% t, geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+d_hind_i <- filter(dat_hind_fac_i,indic ==  "BS-FLP3-PC", geo %in% cat, s_adj == "SA",time>="2016-01-01") 
 
+d_hind_i$time <- as.yearqtr(d_hind_i$time)
 
 d_hind_i$geo[d_hind_i$geo=="AT"] <- "Österreich"
 d_hind_i$geo[d_hind_i$geo=="EA19"] <- "EU-19"
@@ -480,12 +481,12 @@ d_hind_i$geo[d_hind_i$geo=="FR"] <- "Frankreich"
 d_hind_i$geo[d_hind_i$geo=="IT"] <- "Italien"
 
 d_hind_i$indic[d_hind_i$indic=="BS-FLP3-PC"] <- "Arbeitskräftemangel"
-d_hind_i$indic[d_hind_i$indic=="BS-FLP5-PC"] <- "Andere"
-d_hind_i$indic[d_hind_i$indic=="BS-FLP1-PC"] <- "Keine"
+#d_hind_i$indic[d_hind_i$indic=="BS-FLP5-PC"] <- "Andere"
+#d_hind_i$indic[d_hind_i$indic=="BS-FLP1-PC"] <- "Keine"
 #d_hind_i$indic[d_hind_i$indic=="BS-FLP2-PC"] <- "Insufficient Demand"
 
-break.vec <- c(seq(from = min(d_hind_i$time), to = max(d_hind_i$time),
-                   by = "16 month"),max(d_hind_i$time))
+#break.vec <- c(seq(from = min(d_hind_i$time), to = max(d_hind_i$time),
+#                   by = "16 month"),max(d_hind_i$time))
 
 p <- ggplot(data = d_hind_i) + 
     geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
@@ -500,11 +501,12 @@ p <- ggplot(data = d_hind_i) +
     theme_minimal()+
     theme(legend.position="bottom",legend.title=element_blank()) + 
     #guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-    coord_fixed(ratio=20) +  
+    #coord_fixed(ratio=20) +  
     #ggtitle("Inflationsraten - excluding energy")+
     theme(text = element_text(size = 15))+
     scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
-  scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  #scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+    zoo::scale_x_yearqtr(breaks = seq(from = min(d_hind_i$time), to = max(d_hind_i$time), by = 2),format = '%Y Q%q')+
   theme(axis.text.x = element_text( 
     angle = 60, 
     #color="blue", 
@@ -532,7 +534,7 @@ dev.off()
 \end{figure}
 
 ```{r}
-x <- structure(c(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[1],filter(d_hind_i,indic=="Keine" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Keine" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Keine" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Keine" & geo=="Österreich")$values[1],filter(d_hind_i,indic=="Andere" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Andere" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Andere" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Andere" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c(format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%B"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%B"))), .Names = c("Actual", "Predicted")), class = "table")
+x <- structure(c(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="Österreich")$values[1],filter(d_hind_i,indic=="Keine" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Keine" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Keine" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Keine" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Keine" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Keine" & geo=="Österreich")$values[1],filter(d_hind_i,indic=="Andere" & geo=="EU-19")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Deutschland")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Frankreich")$values[2], filter(d_hind_i,indic=="Andere" & geo=="Italien")$values[2],filter(d_hind_i,indic=="Andere" & geo=="Österreich")$values[2],filter(d_hind_i,indic=="Andere" & geo=="EU-19")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Deutschland")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Frankreich")$values[1], filter(d_hind_i,indic=="Andere" & geo=="Italien")$values[1],filter(d_hind_i,indic=="Andere" & geo=="Österreich")$values[1]),.Dim = c(5, 6), .Dimnames = structure(list(Actual = c("EU-19", "Deutschland","Frankreich","Italien","Österreich"), Predicted = c(format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%YQ%q"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%YQ%q"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%YQ%q"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%YQ%q"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[2],"%YQ%q"),format(filter(d_hind_i,indic=="Arbeitskräftemangel" & geo=="EU-19")$time[1],"%YQ%q"))), .Names = c("Actual", "Predicted")), class = "table")
 
 
 
@@ -579,7 +581,7 @@ t <- c("BS-FLB3-PC","BS-FLB6-PC","BS-FLB1-PC")  #  ,"BS-ESI-I",
 
 dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Industry (quarterly: ei_bsin_q_r2)
 
-d_hind_s <- filter(dat_hind_fac_s,indic %in% t, geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+d_hind_s <- filter(dat_hind_fac_s,indic =="BS-FLB3-PC", geo %in% cat, s_adj == "SA",time>="2019-01-01") 
 
 
 d_hind_s$time <- as.yearqtr(d_hind_s$time)
@@ -598,8 +600,9 @@ d_hind_s$geo[d_hind_s$geo=="FR"] <- "Frankreich"
 d_hind_s$geo[d_hind_s$geo=="IT"] <- "Italien"
 
 d_hind_s$indic[d_hind_s$indic=="BS-FLB3-PC"] <- "Arbeitskräftemangel"
-d_hind_s$indic[d_hind_s$indic=="BS-FLB6-PC"] <- "Andere"
-d_hind_s$indic[d_hind_s$indic=="BS-FLB1-PC"] <- "Keine"
+#d_hind_s$indic[d_hind_s$indic=="BS-FLB6-PC"] <- "Andere"
+#d_hind_s$indic[d_hind_s$indic=="BS-FLB1-PC"] <- "Keine"
+
 #d_hind_s$indic[d_hind_s$indic=="BS-FLB2-PC"] <- "Insufficient Demand"
 
 break.vec <- c(seq(from = as.Date(as.yearqtr(min(d_hind_s$time))), to = as.Date(as.yearqtr(max(d_hind_s$time))),
@@ -1052,5 +1055,169 @@ Table: Geschäftslageindikator, letzte Werte. Quelle: KOF
 
 # Ausgangslage
 
+```{r plot321, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
+
+rm(list=ls())
+
+cat <- c("AT","DE","EA19","FR","IT")
+t <- c("BS-FLP3-PC","BS-FLP5-PC","BS-FLP1-PC")  #  ,"BS-ESI-I",	
+
+dat_hind_fac_i <- get_eurostat(id="ei_bsin_q_r2") #Industry (quarterly: ei_bsin_q_r2)
+dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Services (quarterly: ei_bsin_q_r2)
+
+d_hind_i <- filter(dat_hind_fac_i,indic ==  "BS-FLP3-PC", geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+d_hind_s <- filter(dat_hind_fac_s,indic =="BS-FLB3-PC", geo %in% cat, s_adj == "SA",time>="2016-01-01")
+
+d_hind_i$time <- as.yearqtr(d_hind_i$time)
+d_hind_s$time <- as.yearqtr(d_hind_s$time)
+
+d_hind_i <- rename(d_hind_i,Industry=values)
+d_hind_s <- rename(d_hind_s,Services=values)
+
+d_hind_i <- d_hind_i %>% 
+  select(time, geo, Industry)
+d_hind_s <- d_hind_s %>% 
+  select(time, geo, Services)
+
+d_hind_both <- merge(d_hind_i,d_hind_s,by=c("time","geo"),all=TRUE)
+
+d_hind_both <- pivot_longer(d_hind_both, cols = 3:4, names_to ="branches",
+ values_to = "values")
+  
+  
+
+d_hind_both$geo[d_hind_both$geo=="AT"] <- "Österreich"
+d_hind_both$geo[d_hind_both$geo=="EA19"] <- "EU-19"
+d_hind_both$geo[d_hind_both$geo=="DE"] <- "Deutschland"
+d_hind_both$geo[d_hind_both$geo=="FR"] <- "Frankreich"
+d_hind_both$geo[d_hind_both$geo=="IT"] <- "Italien"
+
+d_hind_both$branches[d_hind_both$branches=="Industry"] <- "Industrie"
+d_hind_both$branches[d_hind_both$branches=="Services"] <- "Dienstleistungen"
 
 
+#d_hind_both$indic[d_hind_both$indic=="BS-FLP3-PC"] <- "Arbeitskräftemangel"
+#d_hind_i$indic[d_hind_i$indic=="BS-FLP5-PC"] <- "Andere"
+#d_hind_i$indic[d_hind_i$indic=="BS-FLP1-PC"] <- "Keine"
+#d_hind_i$indic[d_hind_i$indic=="BS-FLP2-PC"] <- "Insufficient Demand"
+
+#break.vec <- c(seq(from = min(d_hind_i$time), to = max(d_hind_i$time),
+#                   by = "16 month"),max(d_hind_i$time))
+
+p <- ggplot(data = d_hind_both) + 
+    geom_line(mapping = aes(x = time, y = values, color=branches),size=.6) + 
+    scale_color_manual(values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom",legend.title=element_blank()) + 
+    #guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+    #coord_fixed(ratio=20) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+  #scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+    zoo::scale_x_yearqtr(breaks = seq(from = min(d_hind_i$time), to = max(d_hind_i$time), by = 2),format = '%Y Q%q')+
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +
+     #facet_wrap(~ LOCATION, nrow = 2) 
+    facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
+    #geom_text_repel(
+    #aes(x=Time,y = values,label=values), data = data_ends,
+    #fontface ="plain", color = "black", size = 5
+ # ) 
+
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_both.pdf')
+print(p)
+dev.off()
+
+
+```
+\begin{figure}[] \centering
+\includegraphics[trim={0 0cm 0 0cm },clip,width=\textwidth]
+{/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hin_both.pdf}
+\caption{Hemmnisse Sektoren} 
+\label{Inf_M_W}
+\end{figure}
+
+```{r plot2d, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
+
+rm(list=ls())
+
+
+
+cat <- c("AT","DE","EA19","FR","IT")
+t <- c("BS-FLB3-PC","BS-FLB6-PC","BS-FLB1-PC")  #  ,"BS-ESI-I",	
+
+dat_hind <- get_eurostat(id="ei_bsbu_m_r2") #Industry (quarterly: ei_bsin_q_r2)
+
+d <- filter(dat_hind,indic =="BS-FLBA4-PC", geo %in% cat, s_adj == "SA",time>="2019-01-01") 
+
+
+
+d$geo[d$geo=="AT"] <- "Österreich"
+d$geo[d$geo=="EA19"] <- "EU-19"
+d$geo[d$geo=="DE"] <- "Deutschland"
+d$geo[d$geo=="FR"] <- "Frankreich"
+d$geo[d$geo=="IT"] <- "Italien"
+
+d$indic[d$indic=="BS-FLBA4-PC"] <- "Arbeitskräftemangel"
+
+
+break.vec <- c(seq(from = min(d$time), to = max(d$time),
+                   by = "12 month"),max(d$time))
+
+p <- ggplot(data = d) + 
+    geom_line(mapping = aes(x = time, y = values),size=.6) + 
+    scale_color_manual(values = c("#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom",legend.title=element_blank()) + 
+    #guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+    #coord_fixed(ratio=.2) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+ # scale_x_date(date_labels = "%YQ%q",breaks=break.vec) +
+ # zoo::scale_x_yearqtr(limits = c(min(d_hind_s$time), max(d_hind_s$time)),format = '%Y Q%q')+
+  scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+  theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+    #  face=1)
+  ) +   #facet_wrap(~ LOCATION, nrow = 2) 
+    facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
+    #geom_text_repel(
+    #aes(x=Time,y = values,label=values), data = data_ends,
+    #fontface ="plain", color = "black", size = 5
+ # ) 
+
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hind_constr.pdf')
+print(p)
+dev.off()
+
+```
+\begin{figure}[] \centering
+\includegraphics[trim={0 0cm 0 0cm },clip,width=\textwidth]
+{/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_Hind_constr.pdf}
+\caption{Hemmnisse Bausektor} 
+\label{Inf_M_W}
+\end{figure}
