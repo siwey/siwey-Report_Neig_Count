@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.30)  31 OCT 2022 00:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.30)  31 OCT 2022 00:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Paper_neighbour_countries_II.tex
-(./Paper_neighbour_countries_II.tex
+**Paper_neighbour_countries_NEW.tex
+(./Paper_neighbour_countries_NEW.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-10-26> (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -399,91 +399,82 @@ Package: fancyhdr 2022/05/18 v4.0.3 Extensive control of page headers and footer
 \f@nch@O@erf=\skip68
 \f@nch@O@olf=\skip69
 \f@nch@O@orf=\skip70
-) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
-\TX@col@width=\dimen187
-\TX@old@table=\dimen188
-\TX@old@col=\dimen189
-\TX@target=\dimen190
-\TX@delta=\dimen191
-\TX@cols=\count306
-\TX@ftn=\toks28
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/ifsym/ifsym.sty
 Package: ifsym 2000/04/18 I.Kloeckl
-\c@ifsymcnt=\count307
+\c@ifsymcnt=\count306
 )
 
-Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless on input line 105.
+Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless on input line 96.
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless on input line 111.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless on input line 102.
 
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/floatrow/floatrow.sty
 Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen192
-\captionmargin=\dimen193
-\caption@leftmargin=\dimen194
-\caption@rightmargin=\dimen195
-\caption@width=\dimen196
-\caption@indent=\dimen197
-\caption@parindent=\dimen198
-\caption@hangindent=\dimen199
+\caption@tempdima=\dimen187
+\captionmargin=\dimen188
+\caption@leftmargin=\dimen189
+\caption@rightmargin=\dimen190
+\caption@width=\dimen191
+\caption@indent=\dimen192
+\caption@parindent=\dimen193
+\caption@hangindent=\dimen194
 Package caption Info: Standard document class detected.
 )
-\c@float@type=\count308
-\float@exts=\toks29
+\c@float@type=\count307
+\float@exts=\toks28
 \float@box=\box63
 \@floatcapt=\box64
 Package floatrow Info: Modified float package code loaded on input line 455.
 Package floatrow Info: Modified rotfloat package code loaded on input line 473.
-\FR@everyfloat=\toks30
+\FR@everyfloat=\toks29
 \flrow@foot=\insert252
-\FB@wd=\dimen256
-\FBo@wd=\dimen257
-\FBc@wd=\dimen258
+\FB@wd=\dimen195
+\FBo@wd=\dimen196
+\FBc@wd=\dimen197
 \FBo@ht=\skip71
 \FBc@ht=\skip72
 \FBf@ht=\skip73
 \FBo@max=\skip74
 \FBc@max=\skip75
 \FBf@max=\skip76
-\c@FBl@b=\count309
-\floatbox@depth=\count310
-\c@FRobj=\count311
-\c@FRsobj=\count312
+\c@FBl@b=\count308
+\floatbox@depth=\count309
+\c@FRobj=\count310
+\c@FRsobj=\count311
 \Xhsize=\skip77
 \sXhsize=\skip78
 \Zhsize=\skip79
 \sZhsize=\skip80
 \flrow@rowbox=\box65
-\FR@Zunitlength=\dimen259
-\c@FBcnt=\count313
-\FPOScnt=\count314
+\FR@Zunitlength=\dimen198
+\c@FBcnt=\count312
+\FPOScnt=\count313
 \LTleft=\skip81
 \LTright=\skip82
 \LTleft=\skip83
 \LTright=\skip84
-\flrow@types=\toks31
+\flrow@types=\toks30
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip85
-\multirow@cntb=\count315
+\multirow@cntb=\count314
 \multirow@dima=\skip86
-\bigstrutjot=\dimen260
+\bigstrutjot=\dimen199
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen261
-\WF@size=\dimen262
-\c@WF@wrappedlines=\count316
+\wrapoverhang=\dimen256
+\WF@size=\dimen257
+\c@WF@wrappedlines=\count315
 \WF@box=\box66
-\WF@everypar=\toks32
+\WF@everypar=\toks31
 Package: wrapfig 2003/01/31  v 3.6
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
-\everycr=\toks33
+\everycr=\toks32
 \minrowclearance=\skip87
-\rownum=\count317
+\rownum=\count316
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
@@ -497,27 +488,27 @@ Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box67
-\sift@deathcycles=\count318
-\@vwid@loff=\dimen263
-\@vwid@roff=\dimen264
+\sift@deathcycles=\count317
+\@vwid@loff=\dimen258
+\@vwid@roff=\dimen259
 )
-\c@taburow=\count319
-\tabu@nbcols=\count320
-\tabu@cnt=\count321
-\tabu@Xcol=\count322
-\tabu@alloc=\count323
-\tabu@nested=\count324
-\tabu@target=\dimen265
-\tabu@spreadtarget=\dimen266
-\tabu@naturalX=\dimen267
-\tabucolX=\dimen268
-\tabu@Xsum=\dimen269
-\extrarowdepth=\dimen270
-\abovetabulinesep=\dimen271
-\belowtabulinesep=\dimen272
-\tabustrutrule=\dimen273
-\tabu@thebody=\toks34
-\tabu@footnotes=\toks35
+\c@taburow=\count318
+\tabu@nbcols=\count319
+\tabu@cnt=\count320
+\tabu@Xcol=\count321
+\tabu@alloc=\count322
+\tabu@nested=\count323
+\tabu@target=\dimen260
+\tabu@spreadtarget=\dimen261
+\tabu@naturalX=\dimen262
+\tabucolX=\dimen263
+\tabu@Xsum=\dimen264
+\extrarowdepth=\dimen265
+\abovetabulinesep=\dimen266
+\belowtabulinesep=\dimen267
+\tabustrutrule=\dimen268
+\tabu@thebody=\toks33
+\tabu@footnotes=\toks34
 \tabu@box=\box68
 \tabu@arstrutbox=\box69
 \tabu@hleads=\box70
@@ -538,22 +529,22 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \UL@box=\box73
 \UL@hyphenbox=\box74
 \UL@skip=\skip90
-\UL@hook=\toks36
-\UL@height=\dimen274
-\UL@pe=\count325
-\UL@pixel=\dimen275
+\UL@hook=\toks35
+\UL@height=\dimen269
+\UL@pe=\count324
+\UL@pixel=\dimen270
 \ULC@box=\box75
 Package: ulem 2019/11/18
-\ULdepth=\dimen276
+\ULdepth=\dimen271
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen277
-\c@nlinenum=\count326
-\TeXr@lab=\toks37
+\rotheadsize=\dimen272
+\c@nlinenum=\count325
+\TeXr@lab=\toks36
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2022/03/01 v3.6b Customizing captions (AR)
-\c@caption@flags=\count327
-\c@continuedfloat=\count328
+\c@caption@flags=\count326
+\c@continuedfloat=\count327
 Package caption Info: float package is loaded.
 Package caption Info: floatrow package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -566,39 +557,39 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 ) (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count329
+\l__color_backend_stack_int=\count328
 \l__pdf_internal_box=\box76
-)
-No file Paper_neighbour_countries_II.aux.
-\openout1 = `Paper_neighbour_countries_II.aux'.
+) (./Paper_neighbour_countries_NEW.aux)
+\openout1 = `Paper_neighbour_countries_NEW.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 142.
+Package hyperref Info: Link coloring OFF on input line 133.
+(./Paper_neighbour_countries_NEW.out) (./Paper_neighbour_countries_NEW.out)
 \@outlinefile=\write3
-\openout3 = `Paper_neighbour_countries_II.out'.
+\openout3 = `Paper_neighbour_countries_NEW.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -634,7 +625,7 @@ Package hyperref Info: Link coloring OFF on input line 142.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count330
+\c@lstlisting=\count329
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: Fixing longtable code of `floatrow' package.
 Package caption Info: End \AtBeginDocument code.
@@ -642,43 +633,43 @@ Package caption Info: End \AtBeginDocument code.
 Package: fr-longtable 2007/11/28 v0.1b (beta) floatrow: additions for longtable
 \flrow@LT@lasthead=\box77
 \flrow@LT@prelastfoot=\box78
-\c@FBLTpage=\count331
+\c@FBLTpage=\count330
 )
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 144.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 135.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 144.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 135.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 144.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 135.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 144.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 135.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 144.
+(Font)              <12> on input line 135.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 144.
+(Font)              <8> on input line 135.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 144.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 144.
+(Font)              <6> on input line 135.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 135.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 144.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 135.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 1603) in paragraph at lines 171--171
+Underfull \hbox (badness 1603) in paragraph at lines 162--162
 [][]\T1/lmr/bx/n/12 Einschätzung zur gesamtwirtschaftlichen En-twick-lung sowie in aus-gählten
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 183.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 174.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
@@ -686,153 +677,83 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 {/Users/simonwey/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 247.
+               Default added (so using `htbp') on input line 238.
 
-</Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf, id=20, 505.89pt x 505.89pt>
+</Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf, id=27, 505.89pt x 505.89pt>
 File: /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf Graphic file (type pdf)
 <use /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf  used on input line 249.
+Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf  used on input line 240.
 (pdftex.def)             Requested size: 375.81166pt x 322.96976pt.
 
-Overfull \hbox (469.75502pt too wide) detected at line 257
+Overfull \hbox (469.75502pt too wide) detected at line 248
  [] 
  []
 
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 261.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 252.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <13> on input line 261.
+(Font)              <13> on input line 252.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9.09996> on input line 261.
+(Font)              <9.09996> on input line 252.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6.5> on input line 261.
-LaTeX Font Info:    Trying to load font information for U+ifgeo on input line 261.
+(Font)              <6.5> on input line 252.
+LaTeX Font Info:    Trying to load font information for U+ifgeo on input line 252.
 (/Users/simonwey/Library/TinyTeX/texmf-dist/tex/latex/ifsym/uifgeo.fd)
-Underfull \hbox (badness 10000) in alignment at lines 254--263
+Underfull \hbox (badness 10000) in alignment at lines 245--254
 [] [] []
  []
 
 
-Overfull \hbox (469.75502pt too wide) detected at line 267
+Overfull \hbox (469.75502pt too wide) detected at line 258
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 265--271
+Underfull \hbox (badness 10000) in alignment at lines 256--262
 [] [] []
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 271--275
+Underfull \hbox (badness 10000) in alignment at lines 262--266
 [] [] []
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 275--278
+Underfull \hbox (badness 10000) in alignment at lines 266--269
 [] [] []
  []
 
-<SAV.png, id=22, 422.57875pt x 120.45pt>
+<SAV.png, id=29, 422.57875pt x 120.45pt>
 File: SAV.png Graphic file (type png)
 <use SAV.png>
-Package pdftex.def Info: SAV.png  used on input line 278.
+Package pdftex.def Info: SAV.png  used on input line 269.
 (pdftex.def)             Requested size: 113.80762pt x 32.43922pt.
 [2 <./SAV.png>]
 File: SAV.png Graphic file (type png)
 <use SAV.png>
-Package pdftex.def Info: SAV.png  used on input line 278.
+Package pdftex.def Info: SAV.png  used on input line 269.
 (pdftex.def)             Requested size: 113.80762pt x 32.43922pt.
 [3 </Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf>]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 2 on input line 278.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 312.
-
-</Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf, id=48, 505.89pt x 505.89pt>
-File: /Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf Graphic file (type pdf)
-<use /Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf  used on input line 314.
-(pdftex.def)             Requested size: 375.81166pt x 375.81166pt.
-
-Overfull \hbox (469.75502pt too wide) detected at line 320
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 319--324
-[] [] []
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 324--328
-[] [] []
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 328--333
-[] [] []
- []
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 3 on input line 333.
-
-</Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf, id=50, 505.89pt x 505.89pt>
-File: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf Graphic file (type pdf)
-<use /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf>
-Package pdftex.def Info: /Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf  used on input line 336.
-(pdftex.def)             Requested size: 469.76265pt x 469.76265pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (469.75502pt too wide) detected at line 343
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 341--347
-[] [] []
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 347--351
-[] [] []
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 351--358
-[] [] []
- []
-
 File: SAV.png Graphic file (type png)
 <use SAV.png>
-Package pdftex.def Info: SAV.png  used on input line 358.
+Package pdftex.def Info: SAV.png  used on input line 271.
 (pdftex.def)             Requested size: 113.80762pt x 32.43922pt.
-[4]
-File: SAV.png Graphic file (type png)
-<use SAV.png>
-Package pdftex.def Info: SAV.png  used on input line 358.
-(pdftex.def)             Requested size: 113.80762pt x 32.43922pt.
-[5 </Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf>]
-
-! Package array Error:  Illegal pream-token (2cm): `c' used.
-
-See the array package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.360 \begin{tabular}{|c *{8}{|c{2cm}}|}
-                                         \cline{2-7} 
+[4] (./Paper_neighbour_countries_NEW.aux)
+Package rerunfilecheck Info: File `Paper_neighbour_countries_NEW.out' has not changed.
+(rerunfilecheck)             Checksum: 1D091AABA977D206E863EF121D465D74;813.
+ ) 
 Here is how much of TeX's memory you used:
- 16389 strings out of 476996
- 263605 string characters out of 5825397
- 606278 words of memory out of 5000000
- 37248 multiletter control sequences out of 15000+600000
+ 16310 strings out of 476996
+ 261858 string characters out of 5825397
+ 604641 words of memory out of 5000000
+ 37173 multiletter control sequences out of 15000+600000
  528442 words of font info for 73 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,14n,77p,391b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,14n,77p,719b,599s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/simonwey/Library/TinyTeX/texmf-var/fonts/pk/ljfour/public/ifsym/ifgeo10.780pk>{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on Paper_neighbour_countries_NEW.pdf (4 pages, 215669 bytes).
+PDF statistics:
+ 114 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!

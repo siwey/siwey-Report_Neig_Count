@@ -5,17 +5,15 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   pdf_document:
     pandoc_args: --listings
-    includes: 
-      #in_header: preamble.tex
-      includes:
-      in_header: header.tex 
+    includes:
+      in_header: header.tex
       fig_caption: yes
   html_document:
     df_print: paged
   word_document: default
 bibliography: reference.bib
 csl: elsevier-harvard.csl
-header-includes: \usepackage{graphicx}
+header-includes: 
 abstract: 
 - Die steigenden Inflationsraten beschäftigen nicht nur Konsumentinnen und Konsumenten, sondern auch die Politik, die   sich überlegen muss, ob und wie sie gegen den Kaufkraftverlust vorgehen will. Mit ihrer überraschend starken         Erhöhung des Leitzinses hat die Schweizerische Nationalbank viele überrascht. Es bleiben die preistreibenden Entwicklungen als Folge des Ukrainekriegs und der Corona-Pandemie, wobei diese die zugrundeliegende Teuerung aufgrund der expansiven Geldpolitik der Notenbanken überlagern. Eine vergleichbare Situation war die «Great depression» in den 70er-Jahren. Eine Mehrheit der von NZZ und KOF befragten Ökonomen geht von einem temporären Anstieg der Inflation aus. Der Spielraum für Lohnerhöhungen bleibt überschaubar, denn auch die Unternehmen kämpfen beim Bezug von Vorprodukten mit den höheren Preisen. Dies nagt an der Marge und somit am Spielraum für Lohnerhöhungen. Daneben kühlt sich auch die wirtschaftliche Entwicklung ab, etwa aufgrund der zunehmend restriktiveren Geldpolitik, des Ukrainie-Kriegs oder der nach wie vor schwierigen Covid-Situation in China.
 tags:
@@ -35,6 +33,18 @@ library(xtable)
 library(tidyr)
 library(zoo)
 options(xtable.comment=FALSE)
+library(stringr)
+library(tidyverse)
+library(ggrepel)
+library(classInt)
+library(cowplot)
+library(OECD)
+library(tidyverse)
+library(cowplot)
+library(lubridate)
+library(kableExtra)
+library(cowplot)
+library(gt)
 
 ```
 
@@ -155,7 +165,53 @@ sel$value[nrow(sel)]
 \label{Inf_M_W}
 \end{figure}
 
-**Monat** | **`r month(sel$time[nrow(sel)-1],label=TRUE,abbr=FALSE)`** | **`r month(sel$time[nrow(sel)-1],label=TRUE,abbr=FALSE)`**
+```{r}
+# Tabelle vorbereiten
+KOF_Baro_table <- sel %>% 
+  janitor::clean_names() %>% 
+  mutate(delta_vormonat = value - lag(value)) %>% 
+  filter(time == max(time))
+```
+
+```{r}
+KOF_Baro_table$time <- as_date(KOF_Baro_table$time)
+
+KOF_Baro_table %>% 
+  gt(caption = "") %>%
+  tab_header(title = md("KOF-Bartmeter. *Quelle:* KOF"),
+             subtitle = "") %>% 
+  fmt_date(
+    columns = time,
+    date_style = "month"
+  ) %>% 
+  fmt_number(
+    columns = c(value, delta_vormonat),
+    decimals = 1
+  ) %>%
+  cols_align(
+    align = "left",
+    columns = time
+  ) %>% 
+ text_transform(
+    locations = cells_body(
+      columns = delta_vormonat,
+      rows = delta_vormonat > 0),
+    fn = function(x) paste(x, md("\\textcolor{red}{\\FilledSmallTriangleUp}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = delta_vormonat,
+      rows = delta_vormonat < 0),
+      fn = function(x) paste(x,md("\\textcolor{green}{\\FilledSmallTriangleDown}"))
+  )  %>% 
+  cols_label(
+    time = md("**Stand**"),
+    value = md("**Wert**"), 
+    delta_vormonat = md("**Delta (Vormonat)**")
+  )
+```
+
+**Monat** | **`r month(sel$time[nrow(sel)-1],label=TRUE,abbr=FALSE)`** | **`r month(sel$time[nrow(sel)],label=TRUE,abbr=FALSE)`**
 ------------- | -------------|-------------
 **KOF-Konjunktur-Barometer** | `r round(sel$value[nrow(sel)-1],1)` | `r round(sel$value[nrow(sel)],1)`
 Table: KOF-Konjunkturbarometer, letzte Werte. Quelle: KOF
@@ -401,7 +457,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
+  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen}} \\\\ \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Wirtsch. Lage}} & \\multicolumn{2}{c|}{\\textbf{Ind.\nVertrauensind.}} & \\multicolumn{2}{c|}{\\textbf{DL\n Vertrauensind.}} \\\\ \\hline
     \\textbf{Land} ')
@@ -434,7 +490,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-3}
+  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-3}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Wirtsch. Lage}} \\\\ \\hline     \\textbf{Land} ')
 
 
@@ -546,7 +602,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
+  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen Hemmnisse}} \\\\ \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Arbeitskräftemangel}} & \\multicolumn{2}{c|}{\\textbf{Keine}} & \\multicolumn{2}{c|}{\\textbf{Andere}} \\\\ \\hline
     \\textbf{Land} ')
@@ -669,7 +725,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
+  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen Hemmnisse}} \\\\ \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Arbeitskräftemangel}} & \\multicolumn{2}{c|}{\\textbf{Keine}} & \\multicolumn{2}{c|}{\\textbf{Andere}} \\\\ \\hline
     \\textbf{Land} ')
@@ -958,6 +1014,7 @@ dev.off()
 
 rm(list=ls())
 
+
 tsl <- get_time_series("ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11")
 a <- as.data.frame(tsl)
 b <- seq(as.Date("2009/4/1"), by = "month", length.out = nrow(a))
@@ -998,7 +1055,7 @@ p <- ggplot(data=sel,
     theme_minimal()+
     theme(legend.position="bottom") +
     #scale_color_discrete(name="")+
-     coord_fixed(ratio=9) +  
+     coord_fixed(ratio=12) +  
     #ggtitle("Inflationsraten - excluding energy")+
     theme(text = element_text(size = 15))+
     #scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
@@ -1027,7 +1084,7 @@ rm(list=ls())
 
 tsl <- get_time_series("ch.kof.bts_total.ng08.fx.q_ql_ass_bs.balance.d11")
 s_tsl <- lapply(tsl,window, start=c(2020,1))
-pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf')
+#pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/GL.pdf')
 tsplot(s_tsl)
 s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)]
 s_tsl$ch.kof.barometer[length(s_tsl$ch.kof.barometer)-1]
@@ -1067,9 +1124,10 @@ dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Services (quarterly: ei_bsin_
 dat_hind_constr <- get_eurostat(id="ei_bsbu_m_r2") #construction monthly
 
 
-d_hind_i <- filter(dat_hind_fac_i,indic ==  "BS-FLP3-PC", geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+d_hind_i <- filter(dat_hind_fac_i,indic ==  "BS-FLP3-PC", geo %in% cat,s_adj == "SA",time>="2016-01-01") 
 d_hind_s <- filter(dat_hind_fac_s,indic =="BS-FLB3-PC", geo %in% cat, s_adj == "SA",time>="2016-01-01")
 d_hind_c <- filter(dat_hind_constr,indic =="BS-FLBA4-PC", geo %in% cat, s_adj == "SA",time>="2016-01-01") 
+
 
 d_hind_i$time <- as.yearqtr(d_hind_i$time)
 d_hind_s$time <- as.yearqtr(d_hind_s$time)
@@ -1095,9 +1153,9 @@ d_hind_con <- d_hind_con %>%
 d_hind_both <- merge(d_hind_i,d_hind_s,by=c("time","geo"),all=TRUE)
 d_hind_both <- merge(d_hind_both,d_hind_con,by=c("time","geo"),all=TRUE)
 
+
 d_hind_both <- pivot_longer(d_hind_both, cols = 3:5, names_to ="branches",
  values_to = "values")
-  
   
 
 d_hind_both$geo[d_hind_both$geo=="AT"] <- "Österreich"
