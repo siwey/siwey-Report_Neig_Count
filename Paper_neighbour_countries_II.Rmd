@@ -6,7 +6,7 @@ output:
   pdf_document:
     pandoc_args: --listings
     includes:
-      in_header: header.tex
+      in_header: header2.tex
       fig_caption: yes
   html_document:
     df_print: paged
@@ -165,51 +165,7 @@ sel$value[nrow(sel)]
 \label{Inf_M_W}
 \end{figure}
 
-```{r}
-# Tabelle vorbereiten
-KOF_Baro_table <- sel %>% 
-  janitor::clean_names() %>% 
-  mutate(delta_vormonat = value - lag(value)) %>% 
-  filter(time == max(time))
-```
 
-```{r}
-KOF_Baro_table$time <- as_date(KOF_Baro_table$time)
-
-KOF_Baro_table %>% 
-  gt(caption = "") %>%
-  tab_header(title = md("KOF-Bartmeter. *Quelle:* KOF"),
-             subtitle = "") %>% 
-  fmt_date(
-    columns = time,
-    date_style = "month"
-  ) %>% 
-  fmt_number(
-    columns = c(value, delta_vormonat),
-    decimals = 1
-  ) %>%
-  cols_align(
-    align = "left",
-    columns = time
-  ) %>% 
- text_transform(
-    locations = cells_body(
-      columns = delta_vormonat,
-      rows = delta_vormonat > 0),
-    fn = function(x) paste(x, md("\\textcolor{red}{\\FilledSmallTriangleUp}"))
-  ) %>%
-  text_transform(
-    locations = cells_body(
-      columns = delta_vormonat,
-      rows = delta_vormonat < 0),
-      fn = function(x) paste(x,md("\\textcolor{green}{\\FilledSmallTriangleDown}"))
-  )  %>% 
-  cols_label(
-    time = md("**Stand**"),
-    value = md("**Wert**"), 
-    delta_vormonat = md("**Delta (Vormonat)**")
-  )
-```
 
 **Monat** | **`r month(sel$time[nrow(sel)-1],label=TRUE,abbr=FALSE)`** | **`r month(sel$time[nrow(sel)],label=TRUE,abbr=FALSE)`**
 ------------- | -------------|-------------
@@ -302,16 +258,6 @@ p <- ggplot(data=sel,
 pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf')
 print(p)
 dev.off()
-
-
-
-
-
-
-
-
-
-
 
 # just for viz
 tsl <- get_time_series(c(
@@ -457,7 +403,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-7}
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen}} \\\\ \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Wirtsch. Lage}} & \\multicolumn{2}{c|}{\\textbf{Ind.\nVertrauensind.}} & \\multicolumn{2}{c|}{\\textbf{DL\n Vertrauensind.}} \\\\ \\hline
     \\textbf{Land} ')
@@ -490,7 +436,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-3}
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-3}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Wirtsch. Lage}} \\\\ \\hline     \\textbf{Land} ')
 
 
@@ -602,7 +548,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-7}
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen Hemmnisse}} \\\\ \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Arbeitskräftemangel}} & \\multicolumn{2}{c|}{\\textbf{Keine}} & \\multicolumn{2}{c|}{\\textbf{Andere}} \\\\ \\hline
     \\textbf{Land} ')
@@ -725,7 +671,7 @@ PrintConfusionMatrix <- function(data, ...) {
 #  colnames(x) <- sprintf("\\emph{%s}", colnames(x)) # highlight colnames
 #  rownames(x) <- sprintf("\\emph{%s}", rownames(x)) # highlight rownames
 
-  cat('\\begin{tabular}{|c *{8}{|c{2cm}}|} \\cline{2-7}
+  cat('\\begin{tabular}{|c *{8}{|C{2cm}}|} \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{6}{c|}{\\textbf{Einschätzungen Hemmnisse}} \\\\ \\cline{2-7}
     \\multicolumn{1}{c|}{} & \\multicolumn{2}{c|}{\\textbf{Arbeitskräftemangel}} & \\multicolumn{2}{c|}{\\textbf{Keine}} & \\multicolumn{2}{c|}{\\textbf{Andere}} \\\\ \\hline
     \\textbf{Land} ')

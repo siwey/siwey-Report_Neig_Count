@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.30)  31 OCT 2022 00:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.30)  1 NOV 2022 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -733,27 +733,46 @@ File: SAV.png Graphic file (type png)
 Package pdftex.def Info: SAV.png  used on input line 269.
 (pdftex.def)             Requested size: 113.80762pt x 32.43922pt.
 [3 </Users/simonwey/Repos/Foreign_economics/Graphics/baro.pdf>]
+Overfull \hbox (469.75502pt too wide) detected at line 274
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 271--281
+[] [] [] []
+ []
+
+
+Overfull \hbox (469.75502pt too wide) detected at line 286
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 283--298
+[] [] [] [] [] [] [] []
+ []
+
 File: SAV.png Graphic file (type png)
 <use SAV.png>
-Package pdftex.def Info: SAV.png  used on input line 271.
+Package pdftex.def Info: SAV.png  used on input line 300.
 (pdftex.def)             Requested size: 113.80762pt x 32.43922pt.
 [4] (./Paper_neighbour_countries_NEW.aux)
 Package rerunfilecheck Info: File `Paper_neighbour_countries_NEW.out' has not changed.
 (rerunfilecheck)             Checksum: 1D091AABA977D206E863EF121D465D74;813.
  ) 
 Here is how much of TeX's memory you used:
- 16310 strings out of 476996
- 261858 string characters out of 5825397
- 604641 words of memory out of 5000000
- 37173 multiletter control sequences out of 15000+600000
+ 16316 strings out of 476996
+ 261906 string characters out of 5825397
+ 606852 words of memory out of 5000000
+ 37177 multiletter control sequences out of 15000+600000
  528442 words of font info for 73 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  72i,14n,77p,719b,599s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/simonwey/Library/TinyTeX/texmf-var/fonts/pk/ljfour/public/ifsym/ifgeo10.780pk>{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/simonwey/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/simonwey/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on Paper_neighbour_countries_NEW.pdf (4 pages, 215669 bytes).
+Output written on Paper_neighbour_countries_NEW.pdf (4 pages, 218421 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 119 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

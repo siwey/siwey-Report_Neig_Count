@@ -189,7 +189,7 @@ KOF_Baro_table %>%
     decimals = 1
   ) %>%
   cols_align(
-    align = "left",
+    align = "center",
     columns = time
   ) %>% 
  text_transform(
@@ -216,4 +216,323 @@ KOF_Baro_table %>%
 **KOF-Konjunktur-Barometer** | `r round(sel$value[nrow(sel)-1],1)` | `r round(sel$value[nrow(sel)],1)`
 Table: KOF-Konjunkturbarometer, letzte Werte. Quelle: KOF
 
+```{r plot5, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
 
+rm(list=ls())
+
+tsl <- get_time_series(c(
+  "ch.kof.esi.index",
+  "eu.ec.esi.eu.esi"))
+a1 <- as.data.frame(tsl$ch.kof.esi.index)
+a1 <- rename(a1,"ESI-CH"=x)
+a2 <- as.data.frame(tsl$eu.ec.esi.eu.esi)
+a2 <- rename(a2,"ESI-EU"=x)
+#a <-  rbind(a1,a2)
+b <- seq(as.Date("2007/4/1"), by = "month", length.out = nrow(a1))
+a1 <- relocate(mutate(a1,b),b)
+a1 <- rename(a1,"time"=b)
+
+b <- seq(as.Date("1985/1/1"), by = "month", length.out = nrow(a2))
+a2 <- relocate(mutate(a2,b),b)
+a2 <- rename(a2,"time"=b)
+
+a <- merge(a1,a2,by="time",all=TRUE)
+
+
+
+break.vec <- c(seq(from = min(a$time), to = max(a$time),
+                   by = "12 month"),max(a$time))
+
+sel <- a %>%
+  filter(time >= "2019-01-01"
+         #MEASURE == "STE"
+  ) |>
+  # let's focus on cols location, time value, because none
+  # of the other cols contain information, i.e., all their values
+  # are the same
+  
+  select(time, `ESI-CH`,`ESI-EU`)
+
+sel <- pivot_longer(sel, cols = 2:3, names_to ="country",
+ values_to = "value")
+
+ 
+p <- ggplot(data=sel,
+       mapping=aes(x=time,y=value,
+                   color=country))+
+    geom_line(size=.7)+
+    scale_color_manual(name="",values = c("#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(caption="Quelle: KOF", #title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom") +
+    #scale_color_discrete(name="")+
+     coord_fixed(ratio=8) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    #scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+    #scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
+    scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+    theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=12)#, 
+  #  face=1)
+  ) 
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/ESI.pdf')
+print(p)
+dev.off()
+
+```
+
+```{r}
+# Tabelle vorbereiten
+ESI_table <- sel %>% 
+  janitor::clean_names() %>% 
+  group_by(country) %>% 
+  mutate(delta_vormonat = value[[sum(!is.na(value))]] -value[[sum(!is.na(value))-1]]) %>% 
+  filter(time == time[[sum(!is.na(value))]]) %>% 
+  relocate(country) %>% 
+  ungroup()
+```
+
+```{r}
+ESI_table$time <- as_date(ESI_table$time)
+
+ESI_table %>% 
+  gt(caption = "") %>%
+  tab_header(title = md("ESI. *Quelle:* KOF"),
+             subtitle = "") %>% 
+  fmt_date(
+    columns = time,
+    date_style = "month"
+  ) %>% 
+  fmt_number(
+    columns = c(value, delta_vormonat),
+    decimals = 1
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = time
+  ) %>% 
+ text_transform(
+    locations = cells_body(
+      columns = delta_vormonat,
+      rows = delta_vormonat > 0),
+    fn = function(x) paste(x, md("\\textcolor{green}{\\FilledSmallTriangleUp}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = delta_vormonat,
+      rows = delta_vormonat < 0),
+      fn = function(x) paste(x,md("\\textcolor{red}{\\FilledSmallTriangleDown}"))
+  )  %>% 
+  cols_label(
+    time = md("**Stand**"),
+    country = md("**Land**"), 
+    value = md("**Wert**"), 
+    delta_vormonat = md("**Delta (Vormonat)**")
+  )
+```
+
+
+```{r plot0, echo=FALSE,  include=FALSE, message=FALSE,warning=FALSE}
+
+rm(list=ls())
+
+
+#query <- search_eurostat(pattern="hindering", fixed=FALSE)
+
+cat <- c("AT","DE","EA19","FR","IT")
+ty <- c("BS-ESI-I","BS-ICI-BAL","BS-SCI-BAL")  #  ,"BS-ESI-I",
+t <- c("BAD","VBAD")#"GOOD","VGOOD")
+
+#dat_hind_fac_i <- get_eurostat(id="ei_bsin_q_r2") #Industry (quarterly: ei_bsin_q_r2)
+#dat_hind_fac_s <- get_eurostat(id="ei_bsse_q_r2") #Services (quarterly: ei_bsse_q_r2)
+dat_s_indic <- get_eurostat(id="ei_bssi_m_r2") 
+#dat_empl_exp <- get_eurostat(id="teibs040") 
+
+#d <- filter(dat,indic %in% ty, geo == "IT", s_adj =="SA",time>="2010-01-01") 
+d <- filter(dat_s_indic,indic %in% ty, geo %in% cat, s_adj =="SA",time>="2020-01-01") 
+
+
+d$geo[d$geo=="AT"] <- "Österreich"
+d$geo[d$geo=="EA19"] <- "EU-19"
+d$geo[d$geo=="DE"] <- "Deutschland"
+d$geo[d$geo=="FR"] <- "Frankreich"
+d$geo[d$geo=="IT"] <- "Italien"
+
+d$indic[d$indic=="BS-ESI-I"] <- "Wirtschaftliche Lage"
+d$indic[d$indic=="BS-ICI-BAL"] <- "Ind.: Vertrauensindikator"
+d$indic[d$indic=="BS-SCI-BAL"] <- "DL: Vertrauensindikator"
+
+break.vec <- c(seq(from = min(d$time), to = max(d$time),
+                   by = "12 month"),max(d$time))
+
+p <- ggplot(data = d) + 
+    geom_line(mapping = aes(x = time, y = values, color=indic),size=.6) + 
+    scale_color_manual(name="HADK",values = c("#eb4255","#8E44AD","#ffa500","#659065","#A0522D")) +
+    #  geom_text(data=dat %>% group_by(geo)%>% filter(time==max(time)),size=2.6) + 
+    # theme(legend.position="left")+
+    #  scale_color_manual(values = c("#8E44AD", "#F1C40F","#34495E","#138D75","#E74C3C","#F8C471"))+
+    labs(caption="Quelle: Eurostat", #title = "Erwerbslosenrate",
+      #subtitle = "Quelle: Eurostat",
+      y = "",
+      x = "") +
+    theme_minimal()+
+    theme(legend.position="bottom",legend.title=element_blank()) + 
+    guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+    coord_fixed(ratio=5) +  
+    #ggtitle("Inflationsraten - excluding energy")+
+    theme(text = element_text(size = 15))+
+    scale_y_continuous(labels = function(x) paste0(x*1, "%")) +
+    #scale_x_date(date_breaks = "6 month", date_labels ="%m-%Y")+
+    scale_x_date(date_labels = "%b %y",breaks=break.vec) +
+    theme(axis.text.x = element_text( 
+    angle = 60, 
+    #color="blue", 
+    vjust=0.6,
+    size=10)#, 
+  #  face=1)
+  ) +
+    #facet_wrap(~ LOCATION, nrow = 2) 
+    facet_wrap(factor(geo,levels=c("EU-19","Deutschland","Frankreich","Italien","Österreich")) ~ .,nrow=2) #+
+    #geom_text_repel(
+    #aes(x=Time,y = values,label=values), data = data_ends,
+    #fontface ="plain", color = "black", size = 5
+ # ) 
+
+pdf('/Users/simonwey/Repos/Foreign_economics/Graphics/wrap_ESI.pdf')
+print(p)
+dev.off()
+
+
+
+```
+
+```{r}
+# Tabelle vorbereiten
+Cond_table <- d %>% 
+  janitor::clean_names() %>% 
+  group_by(indic,geo) %>% 
+  arrange(time) %>% 
+  mutate(delta_vormonat = values[[sum(!is.na(values))]] -values[[sum(!is.na(values))-1]]) %>% 
+  filter(time == time[[sum(!is.na(values))]]) %>% 
+  relocate(indic) %>% 
+  select(indic,geo,time,values,delta_vormonat) %>% 
+  ungroup()
+
+a_new <- Cond_table %>% 
+  filter(indic=="Wirtschaftliche Lage") %>% 
+  mutate(v_i = Cond_table$values[Cond_table$indic=="Ind.: Vertrauensindikator"]) %>% 
+  mutate(d_v_i = Cond_table$delta_vormonat[Cond_table$indic=="Ind.: Vertrauensindikator"]) %>% 
+  mutate(v_d = Cond_table$values[Cond_table$indic=="DL: Vertrauensindikator"]) %>% 
+  mutate(d_v_d = Cond_table$delta_vormonat[Cond_table$indic=="DL: Vertrauensindikator"]) %>% 
+  rename(v_wl=values,d_v_wl=delta_vormonat) %>% 
+  select(-indic)
+
+
+```
+
+```{r}
+a_new$time <- as_date(a_new$time)
+
+a_new %>% 
+  gt(caption = "") %>%
+  tab_header(title = md("ESI, Konf.Indikator *Quelle:* Eurostat"),
+             subtitle = "") %>% 
+  fmt_date(
+    columns = time,
+    date_style = "month"
+  ) %>% 
+  fmt_number(
+    columns = c(v_wl,d_v_wl,v_i,d_v_i,v_d,d_v_d),
+    decimals = 1
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = time
+  ) %>% 
+ text_transform(
+    locations = cells_body(
+      columns = d_v_wl,
+      rows = d_v_wl > 0),
+    fn = function(x) paste(x, md("\\textcolor{green}{\\FilledSmallTriangleUp}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = d_v_wl,
+      rows = d_v_wl < 0),
+      fn = function(x) paste(x,md("\\textcolor{red}{\\FilledSmallTriangleDown}"))
+  )  %>% 
+  text_transform(
+    locations = cells_body(
+      columns = d_v_wl,
+      rows = d_v_wl == 0),
+    fn = function(x) paste(x, md("\\textcolor{black}{\\HBar}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = d_v_i,
+      rows = d_v_i > 0),
+    fn = function(x) paste(x, md("\\textcolor{green}{\\FilledSmallTriangleUp}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = d_v_i,
+      rows = d_v_i < 0),
+      fn = function(x) paste(x,md("\\textcolor{red}{\\FilledSmallTriangleDown}"))
+  )  %>% 
+  text_transform(
+    locations = cells_body(
+      columns = d_v_i,
+      rows = d_v_i == 0),
+    fn = function(x) paste(x, md("\\textcolor{black}{\\HBar}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = d_v_d,
+      rows = d_v_d > 0),
+    fn = function(x) paste(x, md("\\textcolor{green}{\\FilledSmallTriangleUp}"))
+  ) %>%
+  text_transform(
+    locations = cells_body(
+      columns = d_v_d,
+      rows = d_v_d < 0),
+      fn = function(x) paste(x,md("\\textcolor{red}{\\FilledSmallTriangleDown}"))
+  )  %>% 
+  text_transform(
+    locations = cells_body(
+      columns = d_v_d,
+      rows = d_v_d == 0),
+    fn = function(x) paste(x, md("\\textcolor{black}{\\HBar}"))
+  ) %>%
+  tab_spanner(
+    label = md("**Wirtsch. Lage**"),
+    columns = c(v_wl, d_v_wl)
+  ) %>% 
+  tab_spanner(
+    label = md("**Ind.: Vertr.ind.**"),
+    columns = c(v_i, d_v_i)
+  ) %>% 
+  tab_spanner(
+    label = md("**DL: Vertr.ind.**"),
+    columns = c(v_d, d_v_d)
+  ) %>% 
+  cols_label(
+    time= md("**Stand**"),
+    geo = md("**Land**"), 
+    v_wl= md("**Wert**"), 
+    d_v_wl = md("**D (VM)**"),
+    v_i= md("**Wert**"), 
+    d_v_i = md("**D (VM)**"),
+    v_d= md("**Wert**"), 
+    d_v_d = md("**D (VM)**")
+  )
+```
